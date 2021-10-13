@@ -1,9 +1,11 @@
 <template>
+<div>
   <label for="title"></label>
   <input id="title" type="text" placeholder="Saisissez votre titre" />
   <label for="textarea"></label>
   <textarea name="textcontainer" id="textarea"></textarea>
   <button @click="postPublication">Poster</button>
+</div>
 </template>
 
 <script>
@@ -17,7 +19,7 @@ export default {
       const optionPublication = {
         method: "POST",
         Headers: {
-          " Authorization": ` Bearer ${token}`,
+          
           "Content-Type": "application/json",
         },
         Body: JSON.stringify({
