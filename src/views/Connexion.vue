@@ -1,27 +1,27 @@
 <template>
-<div>
-  <div class="connexion">
-    <h1>Facebox</h1>
+  <div>
+    <div class="connexion">
+      <h1>Facebox</h1>
+    </div>
+    <div class="form_connexion_container">
+      <form @submit.prevent class="form_connexion">
+        <label for="username">Username</label>
+        <input id="username" type="text" />
+        <label for="password">Password</label>
+        <input id="password" type="password" />
+        <router-link to="">Forgot your password ? </router-link>
+        <input
+          id="btn_connexion"
+          @click="connectUser"
+          type="submit"
+          value="Connexion"
+          @keyup.enter="connectUser"
+        />
+      </form>
+    </div>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/Connexion">Connexion</router-link>
   </div>
-  <div class="form_connexion_container">
-    <form class="form_connexion">
-      <label for="username">Username</label>
-      <input id="username" type="text" />
-      <label for="password">Password</label>
-      <input id="password" type="password" />
-      <router-link to="">Forgot your password ? </router-link>
-      <input
-        id="btn_connexion"
-        @click="connectUser"
-        type="submit"
-        value="Connexion"
-        @keyup.enter="connectUser"
-      />
-    </form>
-  </div>
-  <router-link to="/">Home</router-link> |
-  <router-link to="/Connexion">Connexion</router-link>
-</div>
 </template>
 
 
@@ -36,8 +36,8 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "jeanbernard_doffemont@yahoo.fr",
-          password: "lkjjlfez",
+          email: "test@test.fr",
+          password: "test",
         }),
       };
       const responseConnect = await fetch(urlConnect, optionConnect);
