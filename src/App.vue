@@ -1,6 +1,11 @@
 <template>
-  <div id="nav"></div>
-  <router-view />
+  <div id="nav">
+    <router-view />
+    
+    <router-link to ="/">Home</router-link> |
+    <router-link to ="/Inscription">Inscription</router-link>
+  </div>
+  
 </template>
 
 <style>
