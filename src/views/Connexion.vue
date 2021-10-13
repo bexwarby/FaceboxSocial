@@ -44,6 +44,7 @@ export default {
       console.log(responseConnect);
       const dataConnect = await responseConnect.json();
       console.log(dataConnect);
+      localStorage.setItem("@token", dataConnect.token);
     },
   },
 };

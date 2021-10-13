@@ -10,14 +10,12 @@
 export default {
   methods: {
     async postPublication() {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTY2ZjUxMDUyYmY4MjAwMWU5ZWNjMmUiLCJpYXQiOjE2MzQxNDQ5MTksImV4cCI6MTYzNDIzMTMxOX0.Drx6RUqMWuNk7FZkE1UDrHIYeT_z9OLBFjPT1aRXK5Q";
       const urlPublication =
         "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post";
       const optionPublication = {
         method: "POST",
         Headers: {
-          " Authorization": ` Bearer ${token}`,
+          Authorization: ` Bearer ` + localStorage.getItem(`@token`),
           "Content-Type": "application/json",
         },
         Body: JSON.stringify({
