@@ -1,8 +1,10 @@
 <template>
+<div>
   <header>
     <img src="" />
     <input type="text" placeholder="Recherche" />
   </header>
+
   <div class="nav_vert_container">
     <nav class="vertical_nav">
       <div class="btn_connect">
@@ -16,6 +18,7 @@
       </div>
     </nav>
   </div>
+</div>
 </template>
 <script>
 export default {};

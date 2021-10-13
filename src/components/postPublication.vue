@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="indentityPost">
         <img src="#"  class="pseudoImage">
         <p class="pseudoPost">{{prenom}} {{nom}}</p>
@@ -17,6 +18,7 @@
         <label class="labelCom">Commentaire : </label>
         <input type="text" class="comPost">
     </div>
+
 </template>
 
 <script>

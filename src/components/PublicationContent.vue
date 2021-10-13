@@ -1,9 +1,11 @@
 <template>
-  <label for="title"></label>
-  <input id="title" type="text" placeholder="Saisissez votre titre" />
-  <label for="textarea"></label>
-  <textarea name="textcontainer" id="textarea"></textarea>
-  <button @click="postPublication">Poster</button>
+  <div>
+    <label for="title"></label>
+    <input id="title" type="text" placeholder="Saisissez votre titre" />
+    <label for="textarea"></label>
+    <textarea name="textcontainer" id="textarea"></textarea>
+    <button @click="postPublication">Poster</button>
+  </div>
 </template>
 
 <script>
