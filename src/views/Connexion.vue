@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="connexion">
     <h1>Facebox</h1>
   </div>
@@ -14,6 +15,7 @@
   </div>
   <router-link to="/">Home</router-link> |
   <router-link to="/Connexion">Connexion</router-link>
+</div>
 </template>
 
 
