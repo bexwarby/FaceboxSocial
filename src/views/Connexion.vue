@@ -8,8 +8,14 @@
       <input id="username" type="text" />
       <label for="password">Password</label>
       <input id="password" type="password" />
-      <router-link to="">Forget your password ? </router-link>
-      <input id="btn_connexion" type="submit" value="Connexion" />
+      <router-link to="">Forgot your password ? </router-link>
+      <input
+        id="btn_connexion"
+        @click="connectUser"
+        type="submit"
+        value="Connexion"
+        @keyup.enter="connectUser"
+      />
     </form>
   </div>
   <router-link to="/">Home</router-link> |
@@ -18,8 +24,35 @@
 
 
 <script>
-export default {};
+export default {
+  methods: {
+    async connectUser() {
+      const urlConnect = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/login";
+      const optionConnect = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "jeanbernard_doffemont@yahoo.fr",
+          password: "lkjjlfez",
+        }),
+      };
+      const responseConnect = await fetch(urlConnect, optionConnect);
+      console.log(responseConnect);
+      const dataConnect = await responseConnect.json();
+      console.log(dataConnect);
+    },
+  },
+};
 </script>
+
+
+
+
+
+
+
 
 <style>
 .form_connexion {
@@ -43,6 +76,7 @@ export default {};
   margin: 10px auto;
   width: 40%;
   padding: 12px;
+  cursor: pointer;
 }
 
 .form_connexion_container label {
