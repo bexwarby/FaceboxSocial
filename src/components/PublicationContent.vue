@@ -16,11 +16,11 @@ export default {
         "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post";
       const optionPublication = {
         method: "POST",
-        Headers: {
-          Authorization: ` Bearer ` + localStorage.getItem(`@token`),
+        headers: {
+          Authorization: " Bearer " + localStorage.getItem(`@token`),
           "Content-Type": "application/json",
         },
-        Body: JSON.stringify({
+        body: JSON.stringify({
           title: "voila mes bicesps",
           content: "tatatat",
         }),
