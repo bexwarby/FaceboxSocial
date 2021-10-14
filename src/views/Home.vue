@@ -18,25 +18,20 @@ export default {
     GetPublication: GetPublication,
   },
 
-
-
   methods: {
-
     async mounted() {
-
-
       const GetPost = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts";
       const optionGetPost = {
         method: "GET",
         headers: {
-          "Content-Type" : "application-JSON",
+          "Content-Type": "application/json",
         },
         body: {
           page: Number,
           limit: Number,
-        }
-      }
-    }
-  }
+        },
+      };
+    },
+  },
 };
 </script>
