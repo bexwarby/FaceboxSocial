@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="connexion">
-      <img class="faceboxLogo" src="../assets/img/facebox.svg" alt="logo Facebox">
+      <img
+        class="faceboxLogo"
+        src="../assets/img/facebox.svg"
+        alt="logo Facebox"
+      />
     </div>
     <div class="form_connexion_container">
       <form @submit.prevent class="form_connexion">
@@ -10,7 +14,9 @@
         <label for="password">Password</label>
         <input id="password" type="password" v-model="inputPassword" />
         <router-link to="">Forgot your password ? </router-link>
-        <p v-if="!connectUser">wrong password or email</p>
+        <p class="p_wrong_email" v-if="this.success == false">
+          wrong password or email
+        </p>
         <input
           id="btn_connexion"
           @click="connectUser"
@@ -52,18 +58,14 @@ export default {
       console.log(dataConnect);
       localStorage.setItem("@token", dataConnect.token);
       this.success = dataConnect.success;
-      if (this.success == false) {
-        this;
-      } else {
-        return false;
-      }
+      console.log(this.success);
     },
   },
 };
 </script>
 <style>
-*{
-  font-family: 'Lato', sans-serif;
+* {
+  font-family: "Lato", sans-serif;
 }
 .form_connexion {
   display: flex;
@@ -83,21 +85,19 @@ export default {
   color: #e0a102;
   font-size: 18px;
   font-weight: 900;
- 
 }
-.form_connexion input:hover{
+.form_connexion input:hover {
   outline: none;
-   border-width: 2px;
-   border-color: #e0a102;
-   transition:0.5s;
+  border-width: 2px;
+  border-color: #e0a102;
+  transition: 0.5s;
 }
 
-.form_connexion input:focus{
+.form_connexion input:focus {
   outline: none;
   border-width: 4px;
   border-color: #403c39 #e0a102 #403c39 #e0a102;
   background-color: #f1f0f176;
-
 }
 
 #btn_connexion {
@@ -117,5 +117,9 @@ export default {
 .faceboxLogo {
   width: 345px;
   margin-bottom: 70px;
+}
+
+.p_wrong_email {
+  color: red;
 }
 </style>
