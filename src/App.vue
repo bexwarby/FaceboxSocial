@@ -1,11 +1,7 @@
 <template>
   <div id="nav">
     <router-view />
-    
-    <router-link to ="/">Home</router-link> |
-    <router-link to ="/Inscription">Inscription</router-link>
   </div>
-  
 </template>
 
 <style>
@@ -16,18 +12,5 @@
   text-align: center;
   color: #2c3e50;
   font-family: "Courier New", Courier, monospace;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

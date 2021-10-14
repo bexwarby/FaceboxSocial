@@ -1,24 +1,24 @@
 <template>
-<div>
-  <header>
-    <img src="" />
-    <input type="text" placeholder="Recherche" />
-  </header>
+  <div>
+    <header>
+      <img src="" />
+      <input type="text" placeholder="Recherche" />
+    </header>
 
-  <div class="nav_vert_container">
-    <nav class="vertical_nav">
-      <div class="btn_connect">
-        <router-link to=""><img src="" />EDED</router-link>
-        <router-link to=""><img src="" />DEDE</router-link>
-        <router-link to=""><img src="" />DEDE</router-link>
-        <router-link to=""><img src="" />DEDE</router-link>
-      </div>
-      <div class="btn_disconnect">
-        <router-link to=""><img src="" />ZDZZE</router-link>
-      </div>
-    </nav>
+    <div class="nav_vert_container">
+      <nav class="vertical_nav">
+        <div class="btn_connect">
+          <router-link to="/profil"><img src="" />Profil</router-link>
+          <router-link to="/"><img src="" />Home</router-link>
+          <router-link to=""><img src="" />Shop</router-link>
+          <router-link to=""><img src="" />Group</router-link>
+        </div>
+        <div class="btn_disconnect">
+          <router-link to="/connexion"><img src="" />Deconnexion</router-link>
+        </div>
+      </nav>
+    </div>
   </div>
-</div>
 </template>
 <script>
 export default {};
@@ -57,5 +57,10 @@ header {
   height: 2000px;
   background: chocolate;
   margin-left: 400px;
+}
+
+.btn_connect {
+  display: flex;
+  flex-direction: column;
 }
 </style>

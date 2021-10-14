@@ -4,6 +4,10 @@
       <h1>Registration</h1>
     </div>
     <div class="registration">
+      <label for="age">Age</label>
+      <input type="text" id="age" v-model="inputAge" />
+      <label for="occupation">Occupation</label>
+      <input type="text" id="occupation" v-model="inputOccupation" />
       <label for="lastName">First Name : </label>
       <input type="text" id="lastName" v-model="inputLastName" />
       <label for="firstName">Last Name : </label>
@@ -18,6 +22,10 @@
       </button>
     </div>
   </div>
+  <div>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/connexion">Connexion</router-link>
+  </div>
 </template>
 
 <script>
@@ -28,6 +36,8 @@ export default {
       inputFirstName: "",
       inputEmail: "",
       inputPassword: "",
+      inputAge: "",
+      inputOccupation: "",
     };
   },
 
@@ -45,6 +55,8 @@ export default {
           lastname: this.inputLastName,
           email: this.inputEmail,
           password: this.inputPassword,
+          age: this.inputAge,
+          occupation: this.inputOccupation,
         }),
       };
 
