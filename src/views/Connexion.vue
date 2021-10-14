@@ -10,6 +10,7 @@
         <label for="password">Password</label>
         <input id="password" type="password" v-model="inputPassword" />
         <router-link to="">Forgot your password ? </router-link>
+        <p v-if="!connectUser">wrong password or email</p>
         <input
           id="btn_connexion"
           @click="connectUser"
@@ -20,17 +21,17 @@
       </form>
     </div>
     <router-link to="/">Home</router-link> |
-    <router-link to="/Connexion">Connexion</router-link>
+    <router-link to="/inscription">Inscription</router-link>
   </div>
 </template>
 <script>
 export default {
   data() {
-    return{
-
-      inputEmail:"",
+    return {
+      inputEmail: "",
       inputPassword: "",
-    }
+      success: true,
+    };
   },
   methods: {
     async connectUser() {
@@ -50,6 +51,12 @@ export default {
       const dataConnect = await responseConnect.json();
       console.log(dataConnect);
       localStorage.setItem("@token", dataConnect.token);
+      this.success = dataConnect.success;
+      if (this.success == false) {
+        this;
+      } else {
+        return false;
+      }
     },
   },
 };

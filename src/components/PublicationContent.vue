@@ -1,19 +1,23 @@
 <template>
-  <div>
-    <label for="title"></label>
-    <input
-      id="title"
-      type="text"
-      placeholder="Saisissez votre titre"
-      v-model="inputTitle"
-    />
-    <label for="textarea"></label>
-    <textarea
-      name="textcontainer"
-      id="textarea"
-      v-model="inputContent"
-    ></textarea>
-    <button @click="postPublication">Poster</button>
+  <div class="pubcontent_container">
+    <div class="getpub_top">
+      <label for="title"></label>
+      <input
+        id="title"
+        type="text"
+        placeholder="Saisissez votre titre"
+        v-model="inputTitle"
+      />
+    </div>
+    <div class="getpub_bot">
+      <label for="textarea"></label>
+      <textarea
+        name="textcontainer"
+        id="textarea"
+        v-model="inputContent"
+      ></textarea>
+    </div>
+    <button class="btn_pubcontent" @click="postPublication">Poster</button>
   </div>
 </template>
 <script>
@@ -51,3 +55,15 @@ export default {
   },
 };
 </script>
+<style>
+.pubcontent_container {
+  margin: auto;
+  padding: 55px 0;
+  display: flex;
+  flex-direction: column;
+}
+.btn_pubcontent {
+  margin: auto;
+  width: 75px;
+}
+</style>

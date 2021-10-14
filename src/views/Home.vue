@@ -9,6 +9,7 @@
       :contentPost="element.content"
     >
     </GetPublication>
+
     <button @click="Getpost">post</button>
   </div>
 </template>
