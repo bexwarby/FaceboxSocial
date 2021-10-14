@@ -5,10 +5,10 @@
     </div>
     <div class="form_connexion_container">
       <form @submit.prevent class="form_connexion">
-        <label for="username">Username</label>
-        <input id="username" type="text" />
+        <label for="username">E-mail</label>
+        <input id="username" type="email" v-model="inputEmail" />
         <label for="password">Password</label>
-        <input id="password" type="password" />
+        <input id="password" type="password" v-model="inputPassword" />
         <router-link to="">Forgot your password ? </router-link>
         <input
           id="btn_connexion"
@@ -27,6 +27,13 @@
 
 <script>
 export default {
+  data() {
+    return{
+
+      inputEmail:"",
+      inputPassword: "",
+    }
+  },
   methods: {
     async connectUser() {
       const urlConnect = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/login";
@@ -36,8 +43,8 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "test@test.fr",
-          password: "test",
+          email: this.inputEmail,
+          password: this.inputPassword,
         }),
       };
       const responseConnect = await fetch(urlConnect, optionConnect);
