@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="registration_container">
     <div>
       <h1>Registration</h1>
@@ -26,6 +27,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/connexion">Connexion</router-link>
   </div>
+</div>
 </template>
 
 <script>
