@@ -33,7 +33,8 @@ export default {
 
   methods: {
     async Getpost() {
-      const urlGetPost = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
+      const urlGetPost =
+        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
       const optionGetPost = {
         method: "GET",
         headers: {

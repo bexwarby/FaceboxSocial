@@ -1,15 +1,29 @@
 <template>
   <div>
     <label for="title"></label>
-    <input id="title" type="text" placeholder="Saisissez votre titre" />
+    <input
+      id="title"
+      type="text"
+      placeholder="Saisissez votre titre"
+      v-model="inputTitle"
+    />
     <label for="textarea"></label>
-    <textarea name="textcontainer" id="textarea"></textarea>
+    <textarea
+      name="textcontainer"
+      id="textarea"
+      v-model="inputContent"
+    ></textarea>
     <button @click="postPublication">Poster</button>
   </div>
 </template>
-
 <script>
 export default {
+  data() {
+    return {
+      inputTitle: "",
+      inputContent: "",
+    };
+  },
   methods: {
     async postPublication() {
       const urlPublication =
@@ -21,10 +35,11 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          title: "voila mes bicesps",
-          content: "tatatat",
+          title: this.inputTitle,
+          content: this.inputContent,
         }),
       };
+
       const responsePublication = await fetch(
         urlPublication,
         optionPublication
