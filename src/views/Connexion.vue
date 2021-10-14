@@ -23,8 +23,6 @@
     <router-link to="/Connexion">Connexion</router-link>
   </div>
 </template>
-
-
 <script>
 export default {
   methods: {
@@ -49,14 +47,6 @@ export default {
   },
 };
 </script>
-
-
-
-
-
-
-
-
 <style>
 .form_connexion {
   display: flex;
