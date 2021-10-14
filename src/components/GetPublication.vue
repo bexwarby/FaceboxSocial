@@ -4,7 +4,7 @@
         <h2 class="titlePost">{{titlePost}}</h2>
         <p class="contentPost">{{contentPost}}</p>
     </div>
-
+</div>
 </template>
 
 <script>
