@@ -7,7 +7,9 @@
       :key="index"
       :titlePost="element.title"
       :contentPost="element.content"
-    ></GetPublication>
+    >
+    </GetPublication>
+    <button @click="Getpost">post</button>
   </div>
 </template>
 
@@ -30,17 +32,13 @@ export default {
   },
 
   methods: {
-    async mounted() {
+    async Getpost() {
       const urlGetPost = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts";
       const optionGetPost = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-        Queryparameters: JSON.stringify({
-          page: Number(0),
-          limit: Number(20),
-        }),
       };
 
       const responseGetPost = await fetch(urlGetPost, optionGetPost);
