@@ -1,43 +1,41 @@
 <template>
-<div class="container">
-  <div class="registration_container">
-    <div class="leftContain">
-      <img src="../assets/img/facebox.svg">
-      <p class="addvertissementFacebox"> Si tu te sens FAT</p>
-      <p class="addvertissementFacebox"> et que tu veux de venir FIT</p>
-      <p class="addvertissementFacebox"> Rejoins notre communauté de CROSSFIT</p>
-
+  <div class="container">
+    <div class="registration_container">
+      <div class="leftContain">
+        <img src="../assets/img/facebox.svg" />
+        <p class="addvertissementFacebox">Si tu te sens FAT</p>
+        <p class="addvertissementFacebox">et que tu veux de venir FIT</p>
+        <p class="addvertissementFacebox">
+          Rejoins notre communauté de CROSSFIT
+        </p>
+      </div>
+      <div class="rightContain">
+        <div>
+          <h1>Registration</h1>
+        </div>
+        <div class="registration">
+          <label for="lastName">First Name : </label>
+          <input type="text" id="lastName" v-model="inputLastName" />
+          <label for="firstName">Last Name : </label>
+          <input type="text" id="firstName" v-model="inputFirstName" />
+          <label for="email">E-mail : </label>
+          <input type="text" id="email" v-model="inputEmail" />
+          <label for="password">Password : </label>
+          <input type="text" id="password" v-model="inputPassword" />
+          <p class="p_wrong_email" v-if="this.success == false">
+            Veuillez remplir les champs
+          </p>
+          <button type="submit" id="button_inscription" @click="CreateAccount">
+            Inscription
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="rightContain">
     <div>
-        <h1>Registration</h1>
-      </div>
-      <div class="registration">
-        <label for="age">Age</label>
-        <input type="text" id="age" v-model="inputAge" />
-        <label for="occupation">Occupation</label>
-        <input type="text" id="occupation" v-model="inputOccupation" />
-        <label for="lastName">First Name : </label>
-        <input type="text" id="lastName" v-model="inputLastName" />
-        <label for="firstName">Last Name : </label>
-        <input type="text" id="firstName" v-model="inputFirstName" />
-        <label for="email">E-mail : </label>
-        <input type="text" id="email" v-model="inputEmail" />
-        <label for="password">Password : </label>
-        <input type="text" id="password" v-model="inputPassword" />
-
-        <button type="submit" id="button_inscription" @click="CreateAccount">
-          Inscription
-        </button>
-      </div>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/connexion">Connexion</router-link>
     </div>
-  
   </div>
-  <div>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/connexion">Connexion</router-link>
-  </div>
-</div>
 </template>
 
 <script>
@@ -48,8 +46,7 @@ export default {
       inputFirstName: "",
       inputEmail: "",
       inputPassword: "",
-      inputAge: "",
-      inputOccupation: "",
+      success: true,
     };
   },
 
@@ -67,8 +64,6 @@ export default {
           lastname: this.inputLastName,
           email: this.inputEmail,
           password: this.inputPassword,
-          age: this.inputAge,
-          occupation: this.inputOccupation,
         }),
       };
 
@@ -79,13 +74,15 @@ export default {
       const data = await response.json();
 
       console.log(data);
+
+      this.success = data.success;
     },
   },
 };
 </script>
 
 <style>
-.container{
+.container {
   display: flex;
   flex-direction: column;
 }
@@ -100,21 +97,20 @@ export default {
   height: 700px;
   margin: auto;
 }
-.leftContain{
+.leftContain {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 600px;
   height: 700px;
   padding-right: 120px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 27px;
   font-weight: 700;
   color: #403c39;
-
 }
 
-.rightContain{
+.rightContain {
   width: 400px;
   height: 700px;
 }
