@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="connexion">
-      <h1>Facebox</h1>
+      <img class="faceboxLogo" src="../assets/img/facebox.svg" alt="logo Facebox">
     </div>
     <div class="form_connexion_container">
       <form @submit.prevent class="form_connexion">
@@ -84,10 +84,17 @@ export default {
   width: 40%;
   padding: 12px;
   cursor: pointer;
+  background-color: #403c39;
+  color: #f1f0f1;
 }
 
 .form_connexion_container label {
   text-align: left;
   margin: 5px 30px;
+}
+
+.faceboxLogo {
+  width: 345px;
+  margin-bottom: 70px;
 }
 </style>
