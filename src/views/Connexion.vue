@@ -62,6 +62,9 @@ export default {
 };
 </script>
 <style>
+*{
+  font-family: 'Lato', sans-serif;
+}
 .form_connexion {
   display: flex;
   flex-direction: column;
@@ -75,8 +78,26 @@ export default {
 .form_connexion_container input {
   width: 80%;
   border-radius: 5px;
-  margin: 10px auto;
+  margin: 20px auto;
   padding: 8px;
+  color: #e0a102;
+  font-size: 18px;
+  font-weight: 900;
+ 
+}
+.form_connexion input:hover{
+  outline: none;
+   border-width: 2px;
+   border-color: #e0a102;
+   transition:0.5s;
+}
+
+.form_connexion input:focus{
+  outline: none;
+  border-width: 4px;
+  border-color: #403c39 #e0a102 #403c39 #e0a102;
+  background-color: #f1f0f176;
+
 }
 
 #btn_connexion {
