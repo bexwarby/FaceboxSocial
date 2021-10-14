@@ -14,9 +14,11 @@
         <label for="password">Password</label>
         <input id="password" type="password" v-model="inputPassword" />
         <router-link to="">Forgot your password ? </router-link>
+        <!--création d'un v-if si les identifiants ne sont pas respectés -->
         <p class="p_wrong_email" v-if="this.success == false">
           wrong password or email
         </p>
+        <!--appel de la fontion qui vérifie que l'utilisateur est bien inscrit au click et au keypress -->
         <input
           id="btn_connexion"
           @click="connectUser"
@@ -26,12 +28,14 @@
         />
       </form>
     </div>
+    <!--routes qui permettent la navigation-->
     <router-link to="/">Home</router-link> |
     <router-link to="/inscription">Inscription</router-link>
   </div>
 </template>
 <script>
 export default {
+  //Création des data properties
   data() {
     return {
       inputEmail: "",
@@ -39,24 +43,32 @@ export default {
       success: true,
     };
   },
+  //Création de la méthode
   methods: {
+    //Demande asynchronisée permettant la récupération des identifiants utilisateur via l'API
     async connectUser() {
       const urlConnect = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/login";
+      //Options de la requête API
       const optionConnect = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        // Ne pas oublier de stringify
         body: JSON.stringify({
           email: this.inputEmail,
           password: this.inputPassword,
         }),
       };
+      // création de la const de réponse qui va chercher les options de l'API
       const responseConnect = await fetch(urlConnect, optionConnect);
       console.log(responseConnect);
+      // Création de la const data qui nous permet la récupération des data stockées dans l'API
       const dataConnect = await responseConnect.json();
       console.log(dataConnect);
+      // Sauvegarde du token généré par l'API lors de la connection
       localStorage.setItem("@token", dataConnect.token);
+      //Récupération du booléan success généré par l'API afin d'indiqué à l'utilisateur si les identifiants ne sont pas respectés
       this.success = dataConnect.success;
       console.log(this.success);
     },

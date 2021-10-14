@@ -1,132 +1,112 @@
 <template>
-    <div>
-        <Navbar></Navbar>
-        <div class="profil">
-            <p>First Name : {{firstName}}</p>
-            <p>Last Name : {{lastName}}</p>
-            <p>E-mail : {{email}}</p>
+  <div>
+    <Navbar></Navbar>
+    <div class="profil">
+      <p>First Name : {{ firstName }}</p>
+      <p>Last Name : {{ lastName }}</p>
+      <p>E-mail : {{ email }}</p>
 
-            <p>Age : {{age}}</p>
-        
-            <p>Occupation :{{occupation}}</p> 
+      <p>Age : {{ age }}</p>
 
-            <button @click="getProfil">Clique</button>
+      <p>Occupation :{{ occupation }}</p>
 
-            <button @click="PutProfil" >Edit Profil</button>
+      <button @click="getProfil">Clique</button>
 
-            <label for="firstName"> First Name : </label>
-            <input type="text" id="firstName" v-model="inputFirstName"/>
+      <button @click="PutProfil">Edit Profil</button>
 
-            <label for="lastName"> Last Name : </label>
-            <input type="text" id="lastName" v-model="inputLastName"/>
+      <label for="firstName"> First Name : </label>
+      <input type="text" id="firstName" v-model="inputFirstName" />
 
-            <label for="email"> E-mail : </label>
-            <input type="email" id="email" v-model="inputEmail"/>
+      <label for="lastName"> Last Name : </label>
+      <input type="text" id="lastName" v-model="inputLastName" />
 
-            <label for="age"> Age : </label>
-            <input type="number" id="age" v-model="inputAge"/>
+      <label for="email"> E-mail : </label>
+      <input type="email" id="email" v-model="inputEmail" />
 
-            <label for="occupation"> Occupation : </label>
-            <input type="text" id="occupation" v-model="inputOccupation"/>
-         
-        </div>    
+      <label for="age"> Age : </label>
+      <input type="number" id="age" v-model="inputAge" />
+
+      <label for="occupation"> Occupation : </label>
+      <input type="text" id="occupation" v-model="inputOccupation" />
     </div>
+  </div>
 </template>
 
 <script>
-
 import Navbar from "../components/Navbar.vue";
 
-
 export default {
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      age: 0,
+      occupation: "",
+      inputFirstName: "",
+      inputLastName: "",
+      inputEmail: "",
+      inputAge: 0,
+      inputOccupation: "",
+    };
+  },
 
-    data() {
-        return {
+  components: {
+    Navbar: Navbar,
+  },
 
-            
-            firstName: "",
-            lastName: "",
-            email: "",
-            age: 0,
-            occupation: "",
-            inputFirstName: "",
-            inputLastName: "",
-            inputEmail: "",
-            inputAge: 0,
-            inputOccupation: ""
+  methods: {
+    async getProfil() {
+      const urlGetProfil =
+        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user";
 
-          
-        }
-    },
+      const optionGetProfil = {
+        method: "GET",
 
-    components: {
-        Navbar: Navbar,
-        
-    },
-
-    methods: {
-
-       async getProfil() {
-
-        
-        const urlGetProfil = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user"
-        
-        const optionGetProfil = {
-
-            method: "GET",
-                
-            
-            headers: {
-                Authorization: " bearer " + localStorage.getItem(`@token`),
-                "content-type": "application/json",
-            }
-        }
-
-        const responseGetProfil = await fetch (urlGetProfil, optionGetProfil);
-        console.log(responseGetProfil);
-        const dataGetProfil = await responseGetProfil.json();
-        console.log(dataGetProfil);
-        this.firstName = dataGetProfil.firstname
-        this.lastName = dataGetProfil.lastname
-        this.email = dataGetProfil.email
-        this.age = dataGetProfil.age
-        this.occupation = dataGetProfil.occupation
-
+        headers: {
+          Authorization: " bearer " + localStorage.getItem(`@token`),
+          "content-type": "application/json",
         },
+      };
 
-     async PutProfil () {
+      const responseGetProfil = await fetch(urlGetProfil, optionGetProfil);
+      console.log(responseGetProfil);
+      const dataGetProfil = await responseGetProfil.json();
+      console.log(dataGetProfil);
+      this.firstName = dataGetProfil.firstname;
+      this.lastName = dataGetProfil.lastname;
+      this.email = dataGetProfil.email;
+      this.age = dataGetProfil.age;
+      this.occupation = dataGetProfil.occupation;
+    },
 
-        const urlPutProfil = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user"
+    async PutProfil() {
+      const urlPutProfil =
+        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user";
 
-        const optionPutProfil = {
+      const optionPutProfil = {
+        method: "PUT",
 
-            method: "PUT",
-
-            headers: {
-                Authorization: " bearer " + localStorage.getItem(`@token`),
-                "content-type": "application/json",
-            },
-            body: JSON.stringify ({
-
-                firstname: this.inputFirstName,
-                lastname: this.inputLastName,
-                email: this.inputEmail,
-                age: this.inputAge,
-                occupation: this.inputOccupation
-
-            }),
-        }
-            const response = await fetch (urlPutProfil, optionPutProfil);
-            console.log(response);
-            const dataPutProfil = await response.json();
-            console.log(dataPutProfil);
-
-        }
-    }
-    
-}
+        headers: {
+          Authorization: " bearer " + localStorage.getItem(`@token`),
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          firstname: this.inputFirstName,
+          lastname: this.inputLastName,
+          email: this.inputEmail,
+          age: this.inputAge,
+          occupation: this.inputOccupation,
+        }),
+      };
+      const response = await fetch(urlPutProfil, optionPutProfil);
+      console.log(response);
+      const dataPutProfil = await response.json();
+      console.log(dataPutProfil);
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>

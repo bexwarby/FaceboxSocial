@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="registration_container">
+      <!--Logo et text container-->
       <div class="leftContain">
         <img src="../assets/img/facebox.svg" />
         <p class="addvertissementFacebox">Si tu te sens FAT</p>
@@ -9,10 +10,12 @@
           Rejoins notre communauté de CROSSFIT
         </p>
       </div>
+      <!--Form inscription container -->
       <div class="rightContain">
         <div>
           <h1>Registration</h1>
         </div>
+        <!--v-model sur les inputs afin de récupérer les valeurs saisis par l'utilisateur -->
         <div class="registration">
           <label for="lastName">First Name : </label>
           <input type="text" id="lastName" v-model="inputLastName" />
@@ -22,16 +25,24 @@
           <input type="text" id="email" v-model="inputEmail" />
           <label for="password">Password : </label>
           <input type="text" id="password" v-model="inputPassword" />
+          <!--création d'un v-if si les champs ne sont pas tous remplis -->
           <p class="p_wrong_email" v-if="this.success == false">
             Veuillez remplir les champs
           </p>
-          <button type="submit" id="button_inscription" @click="CreateAccount">
+          <!--appel de la fontion qui crée un compte utilisateur et qui envoie les données au serveur au click et au keypress -->
+          <button
+            type="submit"
+            id="button_inscription"
+            @click="CreateAccount"
+            @keyup.enter="CreateAccount"
+          >
             Inscription
           </button>
         </div>
       </div>
     </div>
     <div>
+      <!--routes qui permettent la navigation-->
       <router-link to="/">Home</router-link> |
       <router-link to="/connexion">Connexion</router-link>
     </div>
@@ -40,6 +51,7 @@
 
 <script>
 export default {
+  //Création des data properties
   data() {
     return {
       inputLastName: "",
@@ -49,16 +61,18 @@ export default {
       success: true,
     };
   },
-
+  //Création de la méthode
   methods: {
+    //Demande asynchronisée permettant l'inscription de l'utilisateur et l'envoi des données saisies au serveur API
     async CreateAccount() {
       const url = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/register";
-
+      //Options de la requête API
       const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        // Ne pas oublier de stringify
         body: JSON.stringify({
           firstname: this.inputFirstName,
           lastname: this.inputLastName,
@@ -66,15 +80,15 @@ export default {
           password: this.inputPassword,
         }),
       };
-
+      // création de la const de réponse qui va chercher les options de l'API
       const response = await fetch(url, options);
 
       console.log(response);
-
+      // Création de la const data qui nous permet la récupération des data stockées dans l'API
       const data = await response.json();
 
       console.log(data);
-
+      //Récupération du booléan success généré par l'API afin d'indiqué à l'utilisateur qu'il a bien rempli tous les champs de saisis
       this.success = data.success;
     },
   },
