@@ -1,6 +1,8 @@
 <template>
+
   <div>
     <div class="publicationPost">
+      
       <h2 class="titlePost">{{ titlePost }}</h2>
       <p class="contentPost">{{ contentPost }}</p>
     </div>
@@ -11,6 +13,9 @@
     </div>
     <div class="comment-container">
       <ul>
+        <li v-for="(element, index) in arrayComment" :key="index">
+          <p>{{element}}</p>
+        </li>
         <li v-for="(element, index) in commentsPost" :key="index">
           <p>{{element.firstname}} {{element.lastname}} a commenté:</p>
           <p>{{element.content}}</p>
@@ -64,9 +69,9 @@ export default {
     },
 
     addComment () {
-      if (this.success) {
+      
       this.arrayComment.push(this.inputComment)
-      }
+      
     }
   },
 };
