@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar></Navbar>
+
     <div class="profil">
       <p>First Name : {{ firstName }}</p>
       <p>Last Name : {{ lastName }}</p>

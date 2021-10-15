@@ -7,7 +7,7 @@
     </div>
     <div class="likes_container">
       <button @click="PostLike">Fit</button>
-      <p>Nombre de Fit:{{ this.like }}</p>
+      <p>Nombre de Fit : {{ this.like }}</p>
     </div>
 
     <button @click="ShowAddComment">Commenter</button>
