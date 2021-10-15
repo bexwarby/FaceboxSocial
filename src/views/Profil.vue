@@ -1,6 +1,8 @@
 <template>
   <div>
     <Navbar></Navbar>
+
+    
     <div class="profil">
       <p>First Name : {{ firstName }}</p>
       <p>Last Name : {{ lastName }}</p>
@@ -13,7 +15,7 @@
       <button @click="getProfil">Clique</button>
 
       <button @click="editProfil">Edit Profil</button>
-      
+
       <div class="editProfil" v-show="showEditProfil">
 
           

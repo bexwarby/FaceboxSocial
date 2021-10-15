@@ -38,8 +38,8 @@ export default {
     GetPublication: GetPublication,
   },
 
-  methods: {
-    async Getpost() {
+  
+    async mounted () {
       const urlGetPost =
         "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
       const optionGetPost = {
@@ -59,6 +59,6 @@ export default {
       this.dataId = dataGetPost.posts;
       console.log("c'est une data", this.dataId);
     },
-  },
+  
 };
 </script>

@@ -7,7 +7,7 @@
     </div>
     <div class="likes_container">
       <button @click="PostLike">Fit</button>
-      <p v-for="(element, index) in likePost" :key="index">FIT:{{ element }}</p>
+      <p>Nombre de Fit : {{this.like}}</p>
     </div>
 
     <button @click="ShowAddComment">Commenter</button>
@@ -46,6 +46,7 @@ export default {
       inputComment: "",
       success: "",
       showComment: false,
+      like: this.likePost
     };
   },
   methods: {
@@ -100,7 +101,14 @@ export default {
       console.log(responsePostLike);
       const dataPostLike = await responsePostLike.json();
       console.log(dataPostLike);
+
+      if (dataPostLike.success) {
+        this.like ++
+      }
     },
+
+
+    
   },
 };
 </script>
