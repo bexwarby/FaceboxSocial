@@ -9,6 +9,8 @@
       :contentPost="element.content"
       :idPost="element._id"
       :commentsPost="element.comments"
+      :firstname="element.firstname"
+      :lastname="element.lastname"
     >
     </GetPublication>
 
