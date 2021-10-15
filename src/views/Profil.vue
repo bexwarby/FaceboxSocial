@@ -12,22 +12,29 @@
 
       <button @click="getProfil">Clique</button>
 
-      <button @click="PutProfil">Edit Profil</button>
+      <button @click="editProfil">Edit Profil</button>
+      
+      <div class="editProfil" v-show="showEditProfil">
 
-      <label for="firstName"> First Name : </label>
-      <input type="text" id="firstName" v-model="inputFirstName" />
+          
 
-      <label for="lastName"> Last Name : </label>
-      <input type="text" id="lastName" v-model="inputLastName" />
+          <label for="firstName"> First Name : </label>
+          <input type="text" id="firstName" v-model="inputFirstName" />
 
-      <label for="email"> E-mail : </label>
-      <input type="email" id="email" v-model="inputEmail" />
+          <label for="lastName"> Last Name : </label>
+          <input type="text" id="lastName" v-model="inputLastName" />
 
-      <label for="age"> Age : </label>
-      <input type="number" id="age" v-model="inputAge" />
+          <label for="email"> E-mail : </label>
+          <input type="email" id="email" v-model="inputEmail" />
 
-      <label for="occupation"> Occupation : </label>
-      <input type="text" id="occupation" v-model="inputOccupation" />
+          <label for="age"> Age : </label>
+          <input type="number" id="age" v-model="inputAge" />
+
+          <label for="occupation"> Occupation : </label>
+          <input type="text" id="occupation" v-model="inputOccupation" />
+
+          <button @click="PutProfil"> Valider </button>
+      </div>
     </div>
   </div>
 </template>
@@ -48,6 +55,7 @@ export default {
       inputEmail: "",
       inputAge: 0,
       inputOccupation: "",
+      showEditProfil: false
     };
   },
 
@@ -104,6 +112,11 @@ export default {
       const dataPutProfil = await response.json();
       console.log(dataPutProfil);
     },
+
+    editProfil () {
+
+      this.showEditProfil = !this.showEditProfil
+    }
   },
 };
 </script>
