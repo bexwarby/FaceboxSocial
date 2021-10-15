@@ -7,6 +7,7 @@
       :key="index"
       :titlePost="element.title"
       :contentPost="element.content"
+      :idPost="element._id"
     >
     </GetPublication>
 
@@ -23,6 +24,7 @@ export default {
   data() {
     return {
       post: [],
+      dataId: "",
     };
   },
 
@@ -50,6 +52,8 @@ export default {
 
       this.post = dataGetPost.posts;
       console.log(this.post);
+      this.dataId = dataGetPost.posts;
+      console.log("c'est une data", this.dataId);
     },
   },
 };
