@@ -5,6 +5,10 @@
       <h4 class="titlePost">{{ titlePost }}</h4>
       <p class="contentPost">{{ contentPost }}</p>
     </div>
+    <div class="likes_container">
+      <button @click="PostLike">Fit</button>
+      <p v-for="(element, index) in likePost" :key="index">FIT:{{ element }}</p>
+    </div>
 
     <button @click="ShowAddComment">Commenter</button>
     <div class="showComment" v-show="showComment">
@@ -34,6 +38,7 @@ export default {
     commentsPost: Array,
     firstname: String,
     lastname: String,
+    likePost: Number,
   },
   data() {
     return {
@@ -75,6 +80,26 @@ export default {
     },
     ShowAddComment() {
       this.showComment = !this.showComment;
+    },
+
+    async PostLike() {
+      const urlPostLike =
+        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post/like";
+      const optionPostLike = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: " Bearer " + localStorage.getItem(`@token`),
+        },
+        body: JSON.stringify({
+          postId: this.idPost,
+        }),
+      };
+
+      const responsePostLike = await fetch(urlPostLike, optionPostLike);
+      console.log(responsePostLike);
+      const dataPostLike = await responsePostLike.json();
+      console.log(dataPostLike);
     },
   },
 };

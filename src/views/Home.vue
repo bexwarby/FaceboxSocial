@@ -11,6 +11,7 @@
       :commentsPost="element.comments"
       :firstname="element.firstname"
       :lastname="element.lastname"
+      :likePost="element.likes.length"
     >
     </GetPublication>
 
