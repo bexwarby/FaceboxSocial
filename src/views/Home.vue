@@ -38,27 +38,25 @@ export default {
     GetPublication: GetPublication,
   },
 
-  methods: {
-    async Getpost() {
-      const urlGetPost =
-        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
-      const optionGetPost = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+  async mounted() {
+    const urlGetPost =
+      "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
+    const optionGetPost = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
 
-      const responseGetPost = await fetch(urlGetPost, optionGetPost);
-      console.log(responseGetPost);
-      const dataGetPost = await responseGetPost.json();
-      console.log(dataGetPost);
+    const responseGetPost = await fetch(urlGetPost, optionGetPost);
+    console.log(responseGetPost);
+    const dataGetPost = await responseGetPost.json();
+    console.log(dataGetPost);
 
-      this.post = dataGetPost.posts;
-      console.log(this.post);
-      this.dataId = dataGetPost.posts;
-      console.log("c'est une data", this.dataId);
-    },
+    this.post = dataGetPost.posts;
+    console.log(this.post);
+    this.dataId = dataGetPost.posts;
+    console.log("c'est une data", this.dataId);
   },
 };
 </script>
