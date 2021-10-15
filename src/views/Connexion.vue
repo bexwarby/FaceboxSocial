@@ -21,7 +21,7 @@
         <!--appel de la fontion qui vérifie que l'utilisateur est bien inscrit au click et au keypress -->
         <input
           id="btn_connexion"
-          @click="connectUser"
+          @click="[connectUser(), accessHome]"
           type="submit"
           value="Connexion"
           @keyup.enter="connectUser"
@@ -72,6 +72,13 @@ export default {
       this.success = dataConnect.success;
       console.log(this.success);
     },
+
+    accesHome () {
+      if (this.success == true) {
+        this.router.go("/")
+      }
+
+    }
   },
 };
 </script>
