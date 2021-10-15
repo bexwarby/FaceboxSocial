@@ -14,7 +14,7 @@
       <button @click="editProfil">Edit Profil</button>
 
       <div class="editProfil" v-show="showEditProfil">
-        <p v-show="this.success == true">Votre profil a bien été modifié</p>
+        <p v-show="this.success == true">Votre profil a bien été modifié !</p>
         <label for="firstName"> First Name : </label>
         <input type="text" id="firstName" v-model="inputFirstName" />
 
@@ -109,6 +109,13 @@ export default {
       const dataPutProfil = await response.json();
       console.log(dataPutProfil);
       this.success = dataPutProfil.success;
+      if (this.success == true) {
+        this.firstName = this.inputFirstName
+        this.lastName = this.inputLastName
+        this.email = this.inputEmail
+        this.age = this.inputAge
+        this.occupation = this.inputOccupation
+      }
     },
 
     editProfil() {
