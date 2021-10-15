@@ -11,8 +11,6 @@
 
       <p>Occupation :{{ occupation }}</p>
 
-      <button @click="getProfil">Clique</button>
-
       <button @click="editProfil">Edit Profil</button>
 
       <div class="editProfil" v-show="showEditProfil">

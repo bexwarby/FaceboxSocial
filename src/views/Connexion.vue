@@ -71,14 +71,10 @@ export default {
       //Récupération du booléan success généré par l'API afin d'indiqué à l'utilisateur si les identifiants ne sont pas respectés
       this.success = dataConnect.success;
       console.log(this.success);
-    },
-
-    accesHome () {
       if (this.success == true) {
-        this.router.go("/")
+        this.$router.push("/");
       }
-
-    }
+    },
   },
 };
 </script>
