@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="publicationPost">
-      <h2 class="titlePost">{{ titlePost }}</h2>
+      <h3>{{ firstname }} {{ lastname }}</h3>
+      <h4 class="titlePost">{{ titlePost }}</h4>
       <p class="contentPost">{{ contentPost }}</p>
     </div>
 
@@ -31,6 +32,8 @@ export default {
     contentPost: String,
     idPost: String,
     commentsPost: Array,
+    firstname: String,
+    lastname: String,
   },
   data() {
     return {
