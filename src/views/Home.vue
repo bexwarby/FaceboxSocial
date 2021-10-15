@@ -8,6 +8,7 @@
       :titlePost="element.title"
       :contentPost="element.content"
       :idPost="element._id"
+      :commentsPost="element.comments"
     >
     </GetPublication>
 

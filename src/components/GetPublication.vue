@@ -5,8 +5,18 @@
       <p class="contentPost">{{ contentPost }}</p>
     </div>
     <div>
-      <button @click="PostComment">Commenter</button>
+      <button >Commenter</button>
       <input type="text" v-model="inputComment" />
+      <button @click= "[PostComment() , addComment()]">Valider</button>
+    </div>
+    <div class="comment-container">
+      <ul>
+        <li v-for="(element, index) in commentsPost" :key="index">
+          <p>{{element.firstname}} {{element.lastname}} a commenté:</p>
+          <p>{{element.content}}</p>
+        </li>
+      </ul>
+    
     </div>
   </div>
 </template>
@@ -17,9 +27,14 @@ export default {
     titlePost: String,
     contentPost: String,
     idPost: String,
+    commentsPost: Array
   },
   data() {
-    return { inputComment: "" };
+    return {
+        arrayComment: [],
+       inputComment: "",
+       success: ""
+      };
   },
   methods: {
     async PostComment() {
@@ -44,7 +59,15 @@ export default {
       console.log(responsePostComment);
       const dataPostComment = await responsePostComment.json();
       console.log(dataPostComment);
+
+      this.success = dataPostComment.success
     },
+
+    addComment () {
+      if (this.success) {
+      this.arrayComment.push(this.inputComment)
+      }
+    }
   },
 };
 </script>
