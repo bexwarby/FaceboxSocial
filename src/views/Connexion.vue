@@ -8,6 +8,7 @@
       />
     </div>
     <div class="form_connexion_container">
+      <!--v-model sur les inputs afin de récupérer les valeurs saisis par l'utilisateur -->
       <form @submit.prevent class="form_connexion">
         <label for="username">E-mail</label>
         <input id="username" type="email" v-model="inputEmail" />
