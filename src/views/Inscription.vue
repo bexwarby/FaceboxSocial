@@ -30,14 +30,16 @@
             Veuillez remplir les champs
           </p>
           <!--appel de la fontion qui crée un compte utilisateur et qui envoie les données au serveur au click et au keypress -->
-          <button
-            type="submit"
-            id="button_inscription"
-            @click="CreateAccount"
-            @keyup.enter="CreateAccount"
-          >
-            Inscription
-          </button>
+          <router-link to="/connexion">
+            <button
+              type="submit"
+              id="button_inscription"
+              @click="CreateAccount"
+              @keyup.enter="CreateAccount"
+            >
+              Inscription
+            </button>
+          </router-link>
         </div>
       </div>
     </div>
