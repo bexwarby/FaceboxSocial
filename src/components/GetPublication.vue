@@ -1,27 +1,25 @@
 <template>
-
   <div>
     <div class="publicationPost">
-      
       <h2 class="titlePost">{{ titlePost }}</h2>
       <p class="contentPost">{{ contentPost }}</p>
     </div>
-    <div>
-      <button >Commenter</button>
+
+    <button @click="ShowAddComment">Commenter</button>
+    <div class="showComment" v-show="showComment">
       <input type="text" v-model="inputComment" />
-      <button @click= "[PostComment() , addComment()]">Valider</button>
+      <button @click="[PostComment(), addComment()]">Valider</button>
     </div>
     <div class="comment-container">
       <ul>
         <li v-for="(element, index) in arrayComment" :key="index">
-          <p>{{element}}</p>
+          <p>{{ element }}</p>
         </li>
         <li v-for="(element, index) in commentsPost" :key="index">
-          <p>{{element.firstname}} {{element.lastname}} a commenté:</p>
-          <p>{{element.content}}</p>
+          <p>{{ element.firstname }} {{ element.lastname }} a commenté:</p>
+          <p>{{ element.content }}</p>
         </li>
       </ul>
-    
     </div>
   </div>
 </template>
@@ -32,14 +30,15 @@ export default {
     titlePost: String,
     contentPost: String,
     idPost: String,
-    commentsPost: Array
+    commentsPost: Array,
   },
   data() {
     return {
-        arrayComment: [],
-       inputComment: "",
-       success: ""
-      };
+      arrayComment: [],
+      inputComment: "",
+      success: "",
+      showComment: false,
+    };
   },
   methods: {
     async PostComment() {
@@ -65,14 +64,15 @@ export default {
       const dataPostComment = await responsePostComment.json();
       console.log(dataPostComment);
 
-      this.success = dataPostComment.success
+      this.success = dataPostComment.success;
     },
 
-    addComment () {
-      
-      this.arrayComment.push(this.inputComment)
-      
-    }
+    addComment() {
+      this.arrayComment.push(this.inputComment);
+    },
+    ShowAddComment() {
+      this.showComment = !this.showComment;
+    },
   },
 };
 </script>
