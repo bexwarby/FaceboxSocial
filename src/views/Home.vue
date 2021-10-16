@@ -16,8 +16,8 @@
       :likePost="element.likes.length"
     >
     </GetPublication>
-    <!--Appel de la fonction Getpost au clic du btn  -->
-    <button @click="Getpost">post</button>
+    
+    
   </div>
 </template>
 

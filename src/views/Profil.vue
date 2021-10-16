@@ -36,11 +36,29 @@
         <button @click="PutProfil">Valider</button>
       </div>
     </div>
+    <div class="ownPost">
+      <GetPublication
+      v-for="(element, index) in post"
+      :key="index"
+      :titlePost="element.title"
+      :contentPost="element.content"
+      :idPost="element._id"
+      :commentsPost="element.comments"
+      :firstname="element.firstname"
+      :lastname="element.lastname"
+      :likePost="element.likes.length"
+      ></GetPublication>
+
+      <button @click="showPost">Clique</button>
+
+    </div>
   </div>
 </template>
 
 <script>
 import Navbar from "../components/Navbar.vue";
+import GetPublication from "../components/GetPublication.vue"
+
 
 export default {
   //Création des data properties
@@ -59,11 +77,14 @@ export default {
       showEditProfil: false,
       successEdited: false,
       success: "",
+      post: [],
     };
   },
 
   components: {
     Navbar: Navbar,
+    GetPublication: GetPublication
+    
   },
   //Création de mounted qui permet l'affichage au montage de la page de façon asynchronisée
   async mounted() {
@@ -92,6 +113,28 @@ export default {
     this.email = dataGetProfil.email;
     this.age = dataGetProfil.age;
     this.occupation = dataGetProfil.occupation;
+
+    const urlGetPost =
+      "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
+    //Options de la requête API
+    const optionGetPost = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    // création de la const de réponse qui va chercher les options de l'API
+    const responseGetPost = await fetch(urlGetPost, optionGetPost);
+    console.log(responseGetPost);
+
+    // Création de la const data qui nous permet la récupération des data stockées dans l'API
+    const dataGetPost = await responseGetPost.json();
+    console.log(dataGetPost);
+
+    // attribution des elements présent dans l'API à notre data qui est initialement un tableau vide
+    this.post = dataGetPost.posts;
+    console.log(this.post);
+  
   },
   //Création de la method permmettant de modifier le profil
   methods: {
@@ -138,7 +181,9 @@ export default {
     editProfil() {
       this.showEditProfil = !this.showEditProfil;
     },
+
   },
+  
 };
 </script>
 
