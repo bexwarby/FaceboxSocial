@@ -53,6 +53,9 @@ export default {
     clearLocalStorage() {
       localStorage.clear();
     },
+    //removeIdUser() {
+    // localStorage.removeItem(`@iduser`);
+    // },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="publicationPost">
-      <router-link to="/profil" @click="GetUserId"
+      <router-link to="/profilUser" @click="GetUserId"
         ><h3>{{ firstname }} {{ lastname }}</h3></router-link
       >
 
@@ -123,6 +123,7 @@ export default {
       console.log(responseGetUserId);
       const dataGetUserId = await responseGetUserId.json();
       console.log(dataGetUserId);
+      //localStorage.setItem(`@iduser`, this.getId);
     },
   },
 };

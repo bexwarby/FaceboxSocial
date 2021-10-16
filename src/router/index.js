@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Connexion from "../views/Connexion.vue";
 import Inscription from "../views/Inscription.vue";
 import Profil from "../views/Profil.vue";
+import ProfilUsers from "../views/ProfilUsers.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/profil",
     name: "Profil",
     component: Profil,
+  },
+  {
+    path: "/profilUser",
+    name: "ProfilUser",
+    component: ProfilUsers,
   },
 ];
 
