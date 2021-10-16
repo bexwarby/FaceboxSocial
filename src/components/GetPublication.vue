@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="publicationPost">
-      <h3>{{ firstname }} {{ lastname }}</h3>
+      <router-link to="/profil" @click="GetUserId"
+        ><h3>{{ firstname }} {{ lastname }}</h3></router-link
+      >
+
       <h4 class="titlePost">{{ titlePost }}</h4>
       <p class="contentPost">{{ contentPost }}</p>
     </div>
@@ -39,6 +42,7 @@ export default {
     firstname: String,
     lastname: String,
     likePost: Number,
+    userId: String,
   },
   data() {
     return {
@@ -47,6 +51,7 @@ export default {
       success: "",
       showComment: false,
       like: this.likePost,
+      getId: this.userId,
     };
   },
   methods: {
@@ -104,6 +109,20 @@ export default {
       if (dataPostLike.success) {
         this.like++;
       }
+    },
+    async GetUserId() {
+      const urlGetUserId = `https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user/${this.getId}`;
+      const optionGetUserId = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: " Bearer " + localStorage.getItem(`@token`),
+        },
+      };
+      const responseGetUserId = await fetch(urlGetUserId, optionGetUserId);
+      console.log(responseGetUserId);
+      const dataGetUserId = await responseGetUserId.json();
+      console.log(dataGetUserId);
     },
   },
 };

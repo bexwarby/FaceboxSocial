@@ -14,10 +14,9 @@
       :firstname="element.firstname"
       :lastname="element.lastname"
       :likePost="element.likes.length"
+      :userId="element.userId"
     >
     </GetPublication>
-    
-    
   </div>
 </template>
 
