@@ -18,6 +18,12 @@
       ></textarea>
     </div>
     <button class="btn_pubcontent" @click="postPublication">Poster</button>
+    <ul>
+      <li v-show="success == true">
+        <p>{{this.inputTitle}}</p>
+        <p>{{this.inputContent}}</p>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
@@ -26,6 +32,7 @@ export default {
     return {
       inputTitle: "",
       inputContent: "",
+      success: false,
     };
   },
   methods: {
@@ -51,6 +58,8 @@ export default {
       console.log(responsePublication);
       const dataPublication = await responsePublication.json();
       console.log(dataPublication);
+
+      this.success = true;
     },
   },
 };
