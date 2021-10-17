@@ -4,7 +4,13 @@
     <div class="publicationPost">
       <div class="user_name">
         <router-link to="/profilUser" @click="GetUserId"
-          ><h3>{{ firstname }} {{ lastname }}</h3></router-link
+          class="profilPost">
+            <img
+              src="../assets/img/user.svg"
+              style="width: 50px"
+            />
+            <h3>{{ firstname }} {{ lastname }}</h3>
+          </router-link
         >
       </div>
     </div>
@@ -33,11 +39,26 @@
     <!--COMMENT/LIKE-->
     <div class="likes_container">
       <div class="like_content">
-        <button @click="PostLike">Fit</button>
-        <p>Nombre de Fit : {{ this.like }}</p>
+        <button @click="PostLike">
+          <img src="../assets/img/muscle-du-bras.png" />
+          Fit
+        </button>
+        <p>{{ this.like }}</p>
+      </div>
+      <div class="dislike_content">
+        <button @click="PostLike">
+          <img src="../assets/img/muscle-du-bras.png" />
+          Fat
+        </button>
+        <p>{{ this.like }}</p>
+      </div>
+      <div class="comment_content">
+        <button  class="btnComment" @click="ShowAddComment">
+          <img src="../assets/img/commenter.png" />
+          Commenter
+        </button>
       </div>
 
-      <button @click="ShowAddComment">Commenter</button>
     </div>
     <!--COMMENT/LIKE-->
     <!--POST COMMENT-->
@@ -163,12 +184,22 @@ export default {
   margin: auto;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
+  margin-bottom: 30px;
+  box-shadow: 1px 1px 2px #d3d3d3;
 }
 /* Name Container */
+.profilPost{
+  display: flex;
+  align-items: center;
+}
+.profilPost img{
+  margin-left: 12px;
+}
+
 .user_name {
   background: #403c39;
   width: 100%;
-  height: 100px;
+  height:60px;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
 }
@@ -176,7 +207,7 @@ export default {
   color: #e0a102;
   text-decoration: none;
   text-align: left;
-  padding: 38px 50px;
+  padding: 2px 50px;
   text-transform: uppercase;
 }
 .user_name a {
@@ -213,6 +244,15 @@ export default {
   overflow-y: auto;
   height: 100%;
 }
+.comment_content{
+  display: flex;
+  align-items: center;
+}
+
+.comment_content img{
+  width: 36px;
+  margin-right: 5px;
+}
 
 .likes_container {
   display: flex;
@@ -220,7 +260,7 @@ export default {
   justify-content: space-between;
   background: #e0a102;
   height: 50px;
-  margin: 10px 10px;
+  margin: 10px 10px 30px 10px;
 }
 .like_content {
   display: flex;
@@ -228,12 +268,46 @@ export default {
 }
 .like_content p {
   margin: 0;
+  padding-top: 11%;
+  color: #f1f0f1;
+}
+
+.dislike_content {
+  display: flex;
+  margin: 0 0 0 20px;
+}
+.dislike_content p {
+  margin: 0;
+  padding-top: 11%;
+  color: #f1f0f1;
 }
 
 .likes_container button {
-  height: 20px;
+  display: flex;
+  align-items: center;
+  height: 40px;
   margin-right: 10px;
+  border: none;
+  background: none;
 }
+
+.likes_container button:hover{
+    color: #f1f0f1;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.like_content button img{
+  width: 36px;
+  padding-right: 5px;
+}
+
+.dislike_content button img{
+  width: 36px;
+  padding-left: 5px;
+  transform: rotate(180deg);
+}
+
 
 .show_comment {
   width: 100%;
@@ -246,5 +320,24 @@ export default {
   background-color: #d3d3d3;
   cursor: pointer;
   border: white;
+  outline: none;
+  box-shadow: 1px 1px 2px #403c3979;
 }
+
+.show_comment input:focus{
+  background-color: hsla(0, 0%, 83%, 0.489);
+  transition: 0.6s;
+}
+
+.show_comment button{
+  margin-left: 22px;
+}
+
+.btnComment:hover{
+  color: #f1f0f1;
+  transition: 0.4s;
+  cursor: pointer;
+
+}
+
 </style>

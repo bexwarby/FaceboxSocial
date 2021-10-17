@@ -107,11 +107,12 @@ export default {
   border-width: 2px;
   border-color: #e0a102;
   transition: 0.5s;
+
 }
 
 .form_connexion input:focus {
   outline: none;
-  border-width: 4px;
+  border-width: 2px;
   border-color: #403c39 #e0a102 #403c39 #e0a102;
   background-color: #f1f0f176;
 }
@@ -124,6 +125,7 @@ export default {
   background-color: #403c39;
   color: #f1f0f1;
 }
+
 
 .form_connexion_container label {
   text-align: left;

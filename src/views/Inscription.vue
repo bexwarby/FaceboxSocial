@@ -13,7 +13,7 @@
       <!--Form inscription container -->
       <div class="rightContain">
         <div>
-          <h1>Registration</h1>
+          <h2>Registration</h2>
         </div>
         <!--v-model sur les inputs afin de récupérer les valeurs saisis par l'utilisateur -->
         <div class="registration">
@@ -110,12 +110,23 @@ export default {
   flex-direction: column;
 }
 
+.rightContain h2::after{
+    content: "";
+    display: block;
+    width: 25%;
+    border: 1px solid #e0a102 ;
+    position: relative;
+    bottom :14px;
+}
+
+
 .registration_container {
   display: flex;
   width: 1000px;
   height: 700px;
   margin: auto;
 }
+
 .leftContain {
   display: flex;
   flex-direction: column;
@@ -130,8 +141,12 @@ export default {
 }
 
 .rightContain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 400px;
   height: 700px;
+ 
 }
 
 .registration_container input {
