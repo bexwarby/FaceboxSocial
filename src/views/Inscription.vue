@@ -30,16 +30,15 @@
             Veuillez remplir les champs
           </p>
           <!--appel de la fontion qui crée un compte utilisateur et qui envoie les données au serveur au click et au keypress -->
-          
-            <button
-              type="submit"
-              id="button_inscription"
-              @click="[CreateAccount(), accessConnexion()]"
-              @keyup.enter="CreateAccount"
-            >
-              Inscription
-            </button>
-          
+
+          <button
+            type="submit"
+            id="button_inscription"
+            @click="[CreateAccount(), accessConnexion()]"
+            @keyup.enter="CreateAccount"
+          >
+            Inscription
+          </button>
         </div>
       </div>
     </div>
@@ -92,12 +91,11 @@ export default {
       console.log(data);
       //Récupération du booléan success généré par l'API afin d'indiqué à l'utilisateur qu'il a bien rempli tous les champs de saisis
       this.success = data.success;
-      
-      if (this.success == true) {
-        this.$router.push('/connexion')
-    }
 
-    }
+      if (this.success == true) {
+        this.$router.push("/connexion");
+      }
+    },
   },
 };
 </script>

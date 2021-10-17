@@ -21,14 +21,15 @@ export default {
       firstname: "",
       occupation: "",
       id: "",
+      getIdUserFromStorage: localStorage.getItem(`@iduser`),
     };
   },
   components: {
     Navbar: Navbar,
   },
+
   async mounted() {
-    //const getIdUserFromStorage = localStorage.getItem(`@iduser`);
-    const urlGetUserId = `https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user/${this.id}`;
+    const urlGetUserId = `https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user/${this.getIdUserFromStorage}`;
     const optionGetUserId = {
       method: "GET",
       headers: {
@@ -45,7 +46,6 @@ export default {
     this.lastname = dataGetUserId.lastname;
     this.firstname = dataGetUserId.firstname;
     this.occupation = dataGetUserId.occupation;
-    this.id = dataGetUserId._id;
   },
 };
 </script>
