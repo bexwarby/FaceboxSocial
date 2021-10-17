@@ -162,6 +162,7 @@ export default {
   height: 535px;
   margin: auto;
   border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
 }
 /* Name Container */
 .user_name {
