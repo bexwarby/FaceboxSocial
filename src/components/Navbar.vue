@@ -4,13 +4,13 @@
     <header>
       <div class="logoSimplif">
         <router-link to="/">
-        <img src="../assets/img/f.svg" style="width: 50px" />
+          <img src="../assets/img/f.svg" style="width: 50px" />
         </router-link>
       </div>
 
-    <div id="app">
-      <input v-model="searchQuery" @keyup.enter="resultQuery()">
-  </div>
+      <div id="app">
+        <input v-model="searchQuery" @keyup.enter="resultQuery()" />
+      </div>
     </header>
 
     <!-- Navbar vertical -->
@@ -64,35 +64,26 @@
 
 <script>
 export default {
-
   props: {
     post: Array,
-    
-    
   },
 
-data() {
-  return {
-    token: localStorage.getItem("@token"),
-     searchQuery: "",
+  data() {
+    return {
+      token: localStorage.getItem("@token"),
+      searchQuery: "",
       postArray: this.post,
-      
-      
-  }
-  
-  
-},
+    };
+  },
 
-
-  computed: {
+  /* computed: {
     resultQuery() {
       console.log("bien ou bien", this.postArray);
       return this.postArray.filter(Element =>{
         return Element.content.toLowerCase().includes(this.searchQuery.toLowerCase())
       })
     }
-    },
- 
+    },*/
 
   methods: {
     //methods permettant la perte du token au clic du btn disconnect
