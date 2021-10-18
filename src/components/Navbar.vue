@@ -3,7 +3,9 @@
     <!-- Header - Logo et recherche -->
     <header>
       <div class="logoSimplif">
+        <router-link to="/">
         <img src="../assets/img/f.svg" style="width: 50px" />
+        </router-link>
       </div>
       <div class="rechercheNavBar">
         <input type="text" placeholder="Recherche" />
@@ -82,7 +84,7 @@ body {
 }
 .nav_vert_container {
   position: fixed;
-  top: 50px;
+  top: 70px;
   left: 0;
   bottom: 0;
 }
@@ -96,7 +98,7 @@ body {
 }
 header {
   background-color: #403c39;
-  height: 50px;
+  height: 70px;
   position: fixed;
   top: 0;
   left: 0;
