@@ -3,7 +3,8 @@
     <!--Appel des composants -->
     <Navbar></Navbar>
     <PublicationContent></PublicationContent>
-    <!--Attribution des valeurs aux props de "GetPublication.vue"/ Récupération des élements dans le tableau de l'API -->
+    <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
+    Récupération des élements dans le tableau de l'API -->
     <GetPublication
       v-for="(element, index) in post"
       :key="index"
@@ -27,9 +28,10 @@ import PublicationContent from "../components/PublicationContent.vue";
 import GetPublication from "../components/GetPublication.vue";
 
 export default {
-  //Création des datas proporties
+  //Création des datas properties
   data() {
     return {
+      // post array pour afficher plusieurs articles
       post: [],
     };
   },
@@ -41,25 +43,24 @@ export default {
   },
   //Création de mounted qui permet l'affichage au montage de la page de façon asynchronisée des posts utilisateurs
   async mounted() {
-    const urlGetPost =
+    const url =
       "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
     //Options de la requête API
-    const optionGetPost = {
+    const options = {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     };
     // création de la const de réponse qui va chercher les options de l'API
-    const responseGetPost = await fetch(urlGetPost, optionGetPost);
-    console.log(responseGetPost);
-
+    const reponse = await fetch(url, options);
+    console.log(reponse);
     // Création de la const data qui nous permet la récupération des data stockées dans l'API
-    const dataGetPost = await responseGetPost.json();
-    console.log(dataGetPost);
+    const data = await reponse.json();
+    console.log(data);
 
     // attribution des elements présent dans l'API à notre data qui est initialement un tableau vide
-    this.post = dataGetPost.posts;
+    this.post = data.posts;
     console.log(this.post);
   },
 };

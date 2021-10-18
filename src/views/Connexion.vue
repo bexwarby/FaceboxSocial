@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="connexion">
+      <!-- Logo -->
       <img
         class="faceboxLogo"
         src="../assets/img/facebox.svg"
@@ -8,25 +9,23 @@
       />
     </div>
     <div class="form_connexion_container">
+      <!--appel de la fontion qui vérifie que l'utilisateur est bien inscrit au click et au keypress -->
       <!--v-model sur les inputs afin de récupérer les valeurs saisis par l'utilisateur -->
-      <form @submit.prevent class="form_connexion">
+      <form @submit.prevent="connectUser()" class="form_connexion">
+        <!-- EMAIL -->
         <label for="username">E-mail</label>
-        <input id="username" type="email" v-model="inputEmail" />
+        <input id="username" type="email" v-model="email" />
+        <!-- PASSWORD -->
         <label for="password">Password</label>
-        <input id="password" type="password" v-model="inputPassword" />
+        <input id="password" type="password" v-model="password" />
+        <!-- FORGOTTEN PASSWORD - à faire! -->
         <router-link to="">Forgot your password ? </router-link>
         <!--création d'un v-if si les identifiants ne sont pas respectés -->
         <p class="p_wrong_email" v-if="this.success == false">
           wrong password or email
         </p>
-        <!--appel de la fontion qui vérifie que l'utilisateur est bien inscrit au click et au keypress -->
-        <input
-          id="btn_connexion"
-          @click="[connectUser(), accessHome]"
-          type="submit"
-          value="Connexion"
-          
-        />
+        <!-- CONNECTION BOUTON -->
+        <input id="btn_connexion" type="submit" value="Connexion" />
       </form>
     </div>
     <!--routes qui permettent la navigation-->
@@ -34,13 +33,14 @@
     <router-link to="/inscription">Inscription</router-link>
   </div>
 </template>
+
 <script>
 export default {
   //Création des data properties
   data() {
     return {
-      inputEmail: "",
-      inputPassword: "",
+      email: "",
+      password: "",
       success: true,
     };
   },
@@ -48,29 +48,29 @@ export default {
   methods: {
     //Demande asynchronisée permettant la récupération des identifiants utilisateur via l'API
     async connectUser() {
-      const urlConnect = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/login";
+      const url = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/login";
       //Options de la requête API
-      const optionConnect = {
+      const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         // Ne pas oublier de stringify
         body: JSON.stringify({
-          email: this.inputEmail,
-          password: this.inputPassword,
+          email: this.email,
+          password: this.password,
         }),
       };
       // création de la const de réponse qui va chercher les options de l'API
-      const responseConnect = await fetch(urlConnect, optionConnect);
-      console.log(responseConnect);
+      const response = await fetch(url, options);
+      console.log(response);
       // Création de la const data qui nous permet la récupération des data stockées dans l'API
-      const dataConnect = await responseConnect.json();
-      console.log(dataConnect);
+      const data = await response.json();
+      console.log(data);
       // Sauvegarde du token généré par l'API lors de la connection
-      localStorage.setItem("@token", dataConnect.token);
+      localStorage.setItem("@token", data.token);
       //Récupération du booléan success généré par l'API afin d'indiqué à l'utilisateur si les identifiants ne sont pas respectés
-      this.success = dataConnect.success;
+      this.success = data.success;
       console.log(this.success);
       if (this.success == true) {
         this.$router.push("/");
@@ -79,6 +79,7 @@ export default {
   },
 };
 </script>
+
 <style>
 * {
   font-family: "Lato", sans-serif;
@@ -107,7 +108,6 @@ export default {
   border-width: 2px;
   border-color: #e0a102;
   transition: 0.5s;
-
 }
 
 .form_connexion input:focus {
@@ -125,7 +125,6 @@ export default {
   background-color: #403c39;
   color: #f1f0f1;
 }
-
 
 .form_connexion_container label {
   text-align: left;

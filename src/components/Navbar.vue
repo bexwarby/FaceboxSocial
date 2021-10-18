@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Header - Logo et recherche -->
     <header>
       <div class="logoSimplif">
         <img src="../assets/img/f.svg" style="width: 50px" />
@@ -9,27 +10,32 @@
       </div>
     </header>
 
+    <!-- Navbar vertical -->
     <div class="nav_vert_container">
       <nav class="vertical_nav">
         <div class="btn_connect">
+          <!-- PROFIL -->
           <router-link to="/profil"
             ><img
               src="../assets/img/user.svg"
               style="width: 50px"
             /><br />Profil</router-link
           >
+          <!-- HOME -->
           <router-link to="/"
             ><img
               src="../assets/img/home.svg"
               style="width: 44px"
             /><br />Home</router-link
           >
+          <!-- SHOP -->
           <router-link to=""
             ><img
               src="../assets/img/boutique.svg"
               style="width: 49px"
             /><br />Shop</router-link
           >
+          <!-- GROUPS -->
           <router-link to=""
             ><img
               src="../assets/img/communauté.svg"
@@ -37,6 +43,7 @@
             /><br />Group</router-link
           >
         </div>
+        <!-- Disconnect bouton -->
         <div class="btn_disconnect">
           <router-link to="/connexion" @click="clearLocalStorage"
             ><img src=../assets/img/deconnection.svg style= width:49px /><br />Deconnexion</router-link
@@ -46,6 +53,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   methods: {
@@ -53,9 +61,6 @@ export default {
     clearLocalStorage() {
       localStorage.clear();
     },
-    //removeIdUser() {
-    // localStorage.removeItem(`@iduser`);
-    // },
   },
 };
 </script>

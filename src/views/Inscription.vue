@@ -12,38 +12,39 @@
       </div>
       <!--Form inscription container -->
       <div class="rightContain">
-        <div>
-          <h2>Registration</h2>
-        </div>
-        <!--v-model sur les inputs afin de récupérer les valeurs saisis par l'utilisateur -->
-        <div class="registration">
+        <h2>Registration</h2>
+        <!--en submit appel de la fontion qui crée un compte utilisateur 
+        et qui envoie les données au serveur -->
+        <!--v-model sur les inputs afin de récupérer les valeurs 
+        saisis par l'utilisateur -->
+        <form
+          class="registration"
+          @submit.prevent="[CreateAccount(), accessConnexion()]"
+        >
+          <!-- LAST NAME -->
           <label for="lastName">First Name : </label>
           <input type="text" id="lastName" v-model="inputLastName" />
+          <!-- FIRST NAME -->
           <label for="firstName">Last Name : </label>
           <input type="text" id="firstName" v-model="inputFirstName" />
+          <!-- EMAIL -->
           <label for="email">E-mail : </label>
           <input type="text" id="email" v-model="inputEmail" />
+          <!-- PASSWORD -->
           <label for="password">Password : </label>
           <input type="password" id="password" v-model="inputPassword" />
           <!--création d'un v-if si les champs ne sont pas tous remplis -->
           <p class="p_wrong_email" v-if="this.success == false">
             Veuillez remplir les champs
           </p>
-          <!--appel de la fontion qui crée un compte utilisateur et qui envoie les données au serveur au click et au keypress -->
-
-          <button
-            type="submit"
-            id="button_inscription"
-            @click="[CreateAccount(), accessConnexion()]"
-            @keyup.enter="CreateAccount"
-          >
-            Inscription
-          </button>
-        </div>
+          <!-- BOUTON VALIDER -->
+          <input id="button_inscription" type="submit" value="Inscription" />
+        </form>
       </div>
     </div>
+
+    <!--routes qui permettent la navigation-->
     <div>
-      <!--routes qui permettent la navigation-->
       <router-link to="/">Home</router-link> |
       <router-link to="/connexion">Connexion</router-link>
     </div>
@@ -55,10 +56,12 @@ export default {
   //Création des data properties
   data() {
     return {
+      // input valeurs
       inputLastName: "",
       inputFirstName: "",
       inputEmail: "",
       inputPassword: "",
+      // success true si l'utilisateur est enregistré
       success: true,
     };
   },
@@ -81,17 +84,15 @@ export default {
           password: this.inputPassword,
         }),
       };
-      // création de la const de réponse qui va chercher les options de l'API
+      // va chercher les options de l'API
       const response = await fetch(url, options);
-
       console.log(response);
-      // Création de la const data qui nous permet la récupération des data stockées dans l'API
+      // la récupération des data stockées dans l'API
       const data = await response.json();
-
       console.log(data);
       //Récupération du booléan success généré par l'API afin d'indiqué à l'utilisateur qu'il a bien rempli tous les champs de saisis
       this.success = data.success;
-
+      // route à connexion si c'est un succès
       if (this.success == true) {
         this.$router.push("/connexion");
       }
@@ -110,15 +111,14 @@ export default {
   flex-direction: column;
 }
 
-.rightContain h2::after{
-    content: "";
-    display: block;
-    width: 25%;
-    border: 1px solid #e0a102 ;
-    position: relative;
-    bottom :14px;
+.rightContain h2::after {
+  content: "";
+  display: block;
+  width: 25%;
+  border: 1px solid #e0a102;
+  position: relative;
+  bottom: 14px;
 }
-
 
 .registration_container {
   display: flex;
@@ -146,7 +146,6 @@ export default {
   justify-content: center;
   width: 400px;
   height: 700px;
- 
 }
 
 .registration_container input {
