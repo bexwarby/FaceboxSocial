@@ -1,63 +1,57 @@
 <template>
-  <div class="pubcontent_container">
-    <div class="getpub_top">
-      <label for="title"></label>
-      <input
-        id="title"
-        type="text"
-        placeholder="Saisissez votre titre"
-        v-model="inputTitle"
-      />
-    </div>
-    <div class="getpub_bot">
-      <label for="textarea"></label>
-      <textarea
-        name="textcontainer"
-        id="textarea"
-        v-model="inputContent"
-      ></textarea>
-    </div>
-    <button class="btn_pubcontent" @click="postPublication">Poster</button>
+  <form @submit.prevent="postPublication" class="pubcontent_container">
+    <!-- l'utilisateur poste son propre article -->
+    <!-- TITLE -->
+    <label for="title">Titre de post :</label>
+    <input id="title" type="text" v-model="title" />
+    <!-- CONTENT -->
+    <label for="textarea">Ecrivez vos idées ici :</label>
+    <textarea name="textcontainer" id="textarea" v-model="content"></textarea>
+    <!-- BOUTON POSTER -->
+    <input id="btn_pubcontent" type="submit" value="Poster" />
+    <!-- Afficher les content du post -->
     <ul>
       <li v-show="success == true">
-        <p>{{this.inputTitle}}</p>
-        <p>{{this.inputContent}}</p>
+        <p>
+          <b>{{ this.title }}</b>
+        </p>
+        <p>{{ this.content }}</p>
       </li>
     </ul>
-  </div>
+  </form>
 </template>
+
 <script>
 export default {
   data() {
     return {
-      inputTitle: "",
-      inputContent: "",
+      title: "",
+      content: "",
       success: false,
     };
   },
   methods: {
+    //Demande asynchronisée permettant d'afficher le poste de l'utilisateur et l'envoi des données saisies au serveur API
     async postPublication() {
-      const urlPublication =
-        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post";
-      const optionPublication = {
+      const url = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post";
+      //Options de la requête API
+      const options = {
         method: "POST",
         headers: {
           Authorization: " Bearer " + localStorage.getItem(`@token`),
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          title: this.inputTitle,
-          content: this.inputContent,
+          title: this.title,
+          content: this.content,
         }),
       };
-
-      const responsePublication = await fetch(
-        urlPublication,
-        optionPublication
-      );
-      console.log(responsePublication);
-      const dataPublication = await responsePublication.json();
-      console.log(dataPublication);
+      // va chercher les options de l'API
+      const response = await fetch(url, options);
+      console.log(response);
+      // la récupération des data en json
+      const data = await response.json();
+      console.log(data);
 
       this.success = true;
     },
