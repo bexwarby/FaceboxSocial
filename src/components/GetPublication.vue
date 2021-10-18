@@ -3,15 +3,10 @@
   <div class="post_container">
     <div class="publicationPost">
       <div class="user_name">
-        <router-link to="/profilUser" @click="GetUserId"
-          class="profilPost">
-            <img
-              src="../assets/img/user.svg"
-              style="width: 50px"
-            />
-            <h3>{{ firstname }} {{ lastname }}</h3>
-          </router-link
-        >
+        <div @click="navigateToUserProfile" class="profilPost">
+          <img src="../assets/img/user.svg" style="width: 50px" />
+          <h3>{{ firstname }} {{ lastname }}</h3>
+        </div>
       </div>
     </div>
     <div class="mid_container">
@@ -53,12 +48,11 @@
         <p>{{ this.like }}</p>
       </div>
       <div class="comment_content">
-        <button  class="btnComment" @click="ShowAddComment">
+        <button class="btnComment" @click="ShowAddComment">
           <img src="../assets/img/commenter.png" />
           Commenter
         </button>
       </div>
-
     </div>
     <!--COMMENT/LIKE-->
     <!--POST COMMENT-->
@@ -151,21 +145,11 @@ export default {
         this.like++;
       }
     },
-    async GetUserId() {
-      const urlGetUserId = `https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user/${this.getId}`;
-      const optionGetUserId = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: " Bearer " + localStorage.getItem(`@token`),
-        },
-      };
-      const responseGetUserId = await fetch(urlGetUserId, optionGetUserId);
-      console.log(responseGetUserId);
-      const dataGetUserId = await responseGetUserId.json();
-      console.log(dataGetUserId);
-
-      localStorage.setItem(`@iduser`, this.getId);
+    async navigateToUserProfile() {
+      this.$router.replace({
+        name: "ProfilUser",
+        params: { userId: this.getId },
+      });
     },
   },
 };
@@ -188,18 +172,19 @@ export default {
   box-shadow: 1px 1px 2px #d3d3d3;
 }
 /* Name Container */
-.profilPost{
+.profilPost {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
-.profilPost img{
+.profilPost img {
   margin-left: 12px;
 }
 
 .user_name {
   background: #403c39;
   width: 100%;
-  height:60px;
+  height: 60px;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
 }
@@ -244,12 +229,12 @@ export default {
   overflow-y: auto;
   height: 100%;
 }
-.comment_content{
+.comment_content {
   display: flex;
   align-items: center;
 }
 
-.comment_content img{
+.comment_content img {
   width: 36px;
   margin-right: 5px;
 }
@@ -291,23 +276,22 @@ export default {
   background: none;
 }
 
-.likes_container button:hover{
-    color: #f1f0f1;
+.likes_container button:hover {
+  color: #f1f0f1;
   transition: 0.4s;
   cursor: pointer;
 }
 
-.like_content button img{
+.like_content button img {
   width: 36px;
   padding-right: 5px;
 }
 
-.dislike_content button img{
+.dislike_content button img {
   width: 36px;
   padding-left: 5px;
   transform: rotate(180deg);
 }
-
 
 .show_comment {
   width: 100%;
@@ -324,20 +308,18 @@ export default {
   box-shadow: 1px 1px 2px #403c3979;
 }
 
-.show_comment input:focus{
+.show_comment input:focus {
   background-color: hsla(0, 0%, 83%, 0.489);
   transition: 0.6s;
 }
 
-.show_comment button{
+.show_comment button {
   margin-left: 22px;
 }
 
-.btnComment:hover{
+.btnComment:hover {
   color: #f1f0f1;
   transition: 0.4s;
   cursor: pointer;
-
 }
-
 </style>
