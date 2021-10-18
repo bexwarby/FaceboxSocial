@@ -19,11 +19,15 @@
         <div class="comment_container">
           <ul>
             <li v-for="(element, index) in arrayComment" :key="index">
-              <p>{{ element }}</p>
+              <p>
+                {{ element }}
+              </p>
             </li>
             <li v-for="(element, index) in commentsPost" :key="index">
               <p>{{ element.firstname }} {{ element.lastname }} a commenté:</p>
-              <p>{{ element.content }}</p>
+              <p>
+                {{ element.content }}
+              </p>
             </li>
           </ul>
         </div>
@@ -166,8 +170,9 @@ export default {
 
 .post_container {
   background: #f1f0f1;
-  width: 800px;
-  height: 535px;
+  width: 820px;
+  padding-bottom: 1px;
+
   margin: auto;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
@@ -210,10 +215,16 @@ export default {
   width: 40%;
   margin-top: 10px;
   margin-right: 10px;
-  height: 300px;
+  height: 309.5px;
 }
 .content_container p {
   text-align: justify;
+  overflow-y: auto;
+  height: 45%;
+}
+
+.content_container p::-webkit-scrollbar {
+  width: 10px;
 }
 .content_container h4 {
   margin-top: 0;
@@ -222,11 +233,11 @@ export default {
   width: 60%;
 }
 .img_container img {
-  width: 450px;
+  width: 465px;
   margin-top: 10px;
 }
 .comment_container {
-  height: 75%;
+  height: 35%;
 }
 .comment_container ul {
   overflow-y: auto;
@@ -306,6 +317,7 @@ export default {
 
 .show_comment {
   width: 100%;
+  padding-bottom: 25px;
 }
 
 .show_comment input {
