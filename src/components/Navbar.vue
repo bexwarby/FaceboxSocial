@@ -32,7 +32,7 @@
             /><br />Home</router-link
           >
           <!-- SHOP -->
-          <router-link to=""
+          <router-link to="/shop"
             ><img
               src="../assets/img/boutique.svg"
               style="width: 49px"

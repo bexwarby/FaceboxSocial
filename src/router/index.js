@@ -4,6 +4,7 @@ import Connexion from "../views/Connexion.vue";
 import Inscription from "../views/Inscription.vue";
 import Profil from "../views/Profil.vue";
 import ProfilUsers from "../views/ProfilUsers.vue";
+import Shop from "../views/Shop.vue";
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: "/profil",
     name: "Profil",
     component: Profil,
+  },
+  {
+    path: "/shop",
+    name: "Shop",
+    component: Shop,
   },
   {
     path: "/profilUser",
