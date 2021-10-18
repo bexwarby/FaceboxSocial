@@ -1,14 +1,29 @@
 <template>
   <form @submit.prevent="postPublication" class="pubcontent_container">
+    <h2>Partagez Maintenant</h2>
     <!-- l'utilisateur poste son propre article -->
     <!-- TITLE -->
-    <label for="title">Titre de post :</label>
-    <input id="title" type="text" v-model="title" />
+    <label class="bottomMargin bold" for="title">Titre de post :</label>
+    <input class="bottomMargin" id="title" type="text" v-model="title" />
     <!-- CONTENT -->
-    <label for="textarea">Ecrivez vos idées ici :</label>
-    <textarea name="textcontainer" id="textarea" v-model="content"></textarea>
+    <label class="bottomMargin bold" for="textarea"
+      >Ecrivez votre post ici :</label
+    >
+    <textarea
+      class="bottomMargin"
+      name="textcontainer"
+      id="textarea"
+      v-model="content"
+    ></textarea>
     <!-- BOUTON POSTER -->
-    <input id="btn_pubcontent" type="submit" value="Poster" />
+    <div class="submitPost">
+      <img class="logo widthFifty" src="../assets/img/commenter.png" />
+      <input
+        class="pubContent bottomMargin widthFifty"
+        type="submit"
+        value="Poster"
+      />
+    </div>
     <!-- Afficher les content du post -->
     <ul>
       <li v-show="success == true">
@@ -60,13 +75,45 @@ export default {
 </script>
 <style>
 .pubcontent_container {
-  margin: auto;
-  padding: 55px 0;
   display: flex;
   flex-direction: column;
+  margin: auto;
+  padding: 70px 30px 20px 30px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: #e0a102;
+  margin: auto;
 }
-.btn_pubcontent {
+.pubContent {
   margin: auto;
   width: 75px;
+  background-color: #e9c872;
+  border: none;
+}
+form h2 {
+  margin-top: 0;
+}
+.submitPost {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #f3f0e77d;
+  width: 120px;
+  margin: auto;
+  border-radius: 5%;
+  box-shadow: 2px 2px 2px black;
+}
+.logo {
+  margin-left: 5px;
+}
+.widthFifty {
+  width: 50px;
+}
+.bottomMargin {
+  margin-bottom: 10px;
+}
+.bold {
+  font-weight: 600;
 }
 </style>

@@ -3,45 +3,59 @@
     <!--Appel le composant Navbar -->
     <Navbar></Navbar>
 
-    <!-- Afficher le profil -->
+    <!-- Afficher le profil 
+    -- Si editing n'est pas activé, les valeurs s'affichent
+    -- Else les input s'affichent pour pouvoir modifier
+    -->
     <div class="profil">
-      <p>First Name : {{ firstName }}</p>
-      <p>Last Name : {{ lastName }}</p>
-      <p>E-mail : {{ email }}</p>
-      <p>Age : {{ age }}</p>
-      <p>Occupation :{{ occupation }}</p>
-
+      <table>
+        <tr>
+          <th>First Name :</th>
+          <td>
+            <p v-if="!showEditProfil">{{ firstName }}</p>
+            <input v-else type="text" id="firstName" v-model="firstName" />
+          </td>
+        </tr>
+        <tr>
+          <th>Last Name :</th>
+          <td>
+            <p v-if="!showEditProfil">{{ lastName }}</p>
+            <input v-else type="text" id="lastName" v-model="lastName" />
+          </td>
+        </tr>
+        <tr>
+          <th>Email :</th>
+          <td>
+            <p v-if="!showEditProfil">{{ email }}</p>
+            <input v-else type="email" id="email" v-model="email" />
+          </td>
+        </tr>
+        <tr>
+          <th>Age :</th>
+          <td>
+            <p v-if="!showEditProfil">{{ age }}</p>
+            <input v-else type="number" id="age" v-model="age" />
+          </td>
+        </tr>
+        <tr>
+          <th>Occupation :</th>
+          <td>
+            <p v-if="!showEditProfil">{{ occupation }}</p>
+            <input v-else type="text" id="occupation" v-model="occupation" />
+          </td>
+        </tr>
+      </table>
       <!--Appel de la method editProfil qui permet le changement de statut booléan
       permettant d'afficher et de masquer les champs de saisies pour modification du profil -->
-      <button @click="editProfil">Edit Profil</button>
-
-      <!--Appel de la fonction PutProfil qui envoie les données au serveur  -->
-      <form
-        @submit.prevent="PutProfil()"
-        class="editProfil"
-        v-show="showEditProfil"
-      >
-        <!--Message d'alerte qui confirme à l'utilisateur qu'il a bien éffectué ses changements -->
-        <p v-show="this.success == true">Votre profil a bien été modifié !</p>
-        <!--v-model sur les inputs afin de récupérer les valeurs saisis par l'utilisateur -->
-        <!-- FIRST NAME -->
-        <label for="firstName"> First Name : </label>
-        <input type="text" id="firstName" v-model="firstName" />
-        <!-- LAST NAME -->
-        <label for="lastName"> Last Name : </label>
-        <input type="text" id="lastName" v-model="lastName" />
-        <!-- EMAIL -->
-        <label for="email"> E-mail : </label>
-        <input type="email" id="email" v-model="email" />
-        <!-- AGE -->
-        <label for="age"> Age : </label>
-        <input type="number" id="age" v-model="age" />
-        <!-- OCCUPATION -->
-        <label for="occupation"> Occupation : </label>
-        <input type="text" id="occupation" v-model="occupation" />
-        <!-- BOUTON VALIDER -->
-        <input id="btn_update" type="submit" value="Valider" />
-      </form>
+      <div>
+        <button v-if="!showEditProfil" @click="editProfil">Modifier</button>
+        <!--Appel de la fonction PutProfil qui envoie les données au serveur  -->
+        <button v-else @click="PutProfil()">Valider</button>
+      </div>
+      <!--Message d'alerte qui confirme à l'utilisateur qu'il a bien éffectué ses changements -->
+      <p v-show="this.success == true" class="success">
+        Votre profil a bien été modifié !
+      </p>
     </div>
 
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
@@ -175,12 +189,7 @@ export default {
 
       //Modification des valeurs du profil avec les nouvelles valeurs des inputs grace a la data success
       if (this.success == true) {
-        this.firstName = this.inputFirstName;
-        this.lastName = this.inputLastName;
-        this.email = this.inputEmail;
-        this.age = this.inputAge;
-        this.occupation = this.inputOccupation;
-        // cache edit profole form quand on a fini
+        // on va cacher les input quand on a sauvegardé
         this.showEditProfil = false;
       }
     },
@@ -192,6 +201,32 @@ export default {
 };
 </script>
 
-<style>
-/**in progress */
+<style scoped>
+/** Profile section */
+.profil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #e0a1026b;
+  height: 250px;
+  padding-top: 50px;
+  margin: auto;
+  margin-bottom: 30px;
+  border-radius: 3%;
+}
+table {
+  width: 250px;
+  text-align: justify;
+}
+table p {
+  margin: 0;
+}
+.success {
+  font-size: large;
+  font-weight: 500;
+  color: #403c39;
+  border: 4px dashed #e0a102;
+  padding: 2px;
+}
 </style>

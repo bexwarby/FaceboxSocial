@@ -19,7 +19,9 @@
         <!-- TITRE -->
         <h4 class="titlePost">{{ titlePost }}</h4>
         <!-- CONTENT -->
-        <p class="contentPost">{{ contentPost }}</p>
+        <div class="p_container">
+          <p class="contentPost">{{ contentPost }}</p>
+        </div>
         <!-- COMMENTAIRES -->
         <ul class="comment_container">
           <li v-for="(element, index) in arrayComment" :key="index">
@@ -72,6 +74,7 @@
         type="text"
         v-model="inputComment"
         placeholder="votre commentaire..."
+        class="inputType"
       />
       <input class="addCommentButton" type="submit" value="Valider" />
     </form>
@@ -191,7 +194,6 @@ export default {
   background: #f1f0f1;
   width: 820px;
   padding-bottom: 1px;
-
   margin: auto;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
@@ -207,7 +209,14 @@ export default {
 .profilPost img {
   margin-left: 12px;
 }
+.titlePost {
+  overflow-wrap: break-word;
+}
 
+.contentPost {
+  overflow-wrap: break-word;
+}
+/*User Name*/
 .user_name {
   background: #403c39;
   width: 100%;
@@ -226,9 +235,11 @@ export default {
   text-decoration: none;
 }
 
+/*Mid container */
 .mid_container {
   display: flex;
 }
+/*Right Container */
 .content_container {
   background: #d3d3d3;
   width: 40%;
@@ -236,28 +247,53 @@ export default {
   margin-right: 10px;
   height: 309.5px;
 }
-.content_container p {
+.p_container p {
+  margin: 5px;
+}
+.p_container {
   text-align: justify;
   overflow-y: auto;
   height: 45%;
 }
-
-.content_container p::-webkit-scrollbar {
+/* Scroll */
+.p_container::-webkit-scrollbar {
   width: 10px;
+  background-color: #e0a102;
+  border-radius: 30px;
+}
+.p_container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+.p_container::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background: #403c39;
 }
 .content_container h4 {
-  margin-top: 0;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
-.img_container {
-  width: 60%;
-}
-.img_container img {
-  width: 465px;
-  margin-top: 10px;
+.comment_container li {
+  list-style: none;
 }
 .comment_container {
-  height: 35%;
+  height: 38%;
   overflow-y: auto;
+}
+.comment_container::-webkit-scrollbar {
+  width: 10px;
+  background-color: #e0a102;
+  border-radius: 30px;
+}
+.comment_container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+.comment_container::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background: #403c39;
 }
 
 .comment_content {
@@ -269,15 +305,15 @@ export default {
   width: 36px;
   margin-right: 5px;
 }
-
-.titlePost {
-  overflow-wrap: break-word;
+/* IMAGE */
+.img_container {
+  width: 60%;
 }
-
-.contentPost {
-  overflow-wrap: break-word;
+.img_container img {
+  width: 465px;
+  margin-top: 10px;
 }
-
+/* Likes Container */
 .likes_container {
   display: flex;
   align-items: center;
@@ -331,13 +367,13 @@ export default {
   padding-left: 5px;
   transform: rotate(180deg);
 }
-
+/*Commentaire */
 .show_comment {
   width: 100%;
   padding-bottom: 25px;
 }
 
-.show_comment input {
+.show_comment .inputType {
   width: 84%;
   height: 40px;
   border-radius: 10px;
@@ -352,11 +388,10 @@ export default {
   background-color: hsla(0, 0%, 83%, 0.489);
   transition: 0.6s;
 }
-
-.show_comment button {
+/* Bouton add Commentaire */
+.addCommentButton {
   margin-left: 22px;
 }
-
 .btnComment:hover {
   color: #f1f0f1;
   transition: 0.4s;
