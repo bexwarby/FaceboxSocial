@@ -2,7 +2,7 @@
 <div class="bodyContain">
     <div class="addsContain">
         <div class="imgAddsContain">
-            <img src="{{urlImg}}" alt="image du produit vendu">
+            <img src="`../assets/img/shopImg/{{urlImg}}`" alt="image du produit vendu">
         </div>
         <h4 class="titleProduct">{{titleProduct}}</h4>
         <p class="priceProduct">{{priceProduct}}€ - {{fullPriceProduct}}€ </p>
@@ -16,7 +16,7 @@
 <script>
 export default {
     props: {
-        //urlImg: String,
+        urlImg: String,
         titleProduct: String,
         priceProduct: Number,
         fullPriceProduct: Number,

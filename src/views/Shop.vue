@@ -4,10 +4,7 @@
 
         <h3 class="selectionSemaine">Selection de la Semaine :</h3>
         <div class="alignAdd">
-            <AddPublication :urlImg="'../assets/img/shopImg/WheyHarder.PNG'" titleProduct="Whey Harder" :priceProduct="44.90" :fullPriceProduct="54.90"></AddPublication>
-            <AddPublication :urlImg="'../assets/img/shopImg/WheyHarder.PNG'" titleProduct="Whey Harder" :priceProduct="44.90" :fullPriceProduct="54.90"></AddPublication>
-            <AddPublication :urlImg="'../assets/img/shopImg/WheyHarder.PNG'" titleProduct="Whey Harder" :priceProduct="44.90" :fullPriceProduct="54.90"></AddPublication>
-            <AddPublication :urlImg="'../assets/img/shopImg/WheyHarder.PNG'" titleProduct="Whey Harder" :priceProduct="44.90" :fullPriceProduct="54.90"></AddPublication>
+            <AddPublication :urlImg="`WheyHarder.PNG`" titleProduct="Whey Harder" :priceProduct="44.90" :fullPriceProduct="54.90"></AddPublication>
         </div>
 </template>
 
