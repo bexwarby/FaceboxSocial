@@ -44,9 +44,14 @@
           >
         </div>
         <!-- Disconnect bouton -->
-        <div class="btn_disconnect">
+        <div class="btn_disconnect" v-if="token">
           <router-link to="/connexion" @click="clearLocalStorage"
             ><img src=../assets/img/deconnection.svg style= width:49px /><br />Deconnexion</router-link
+          >
+        </div>
+        <div class="btn_connect" v-else>
+          <router-link to="/connexion" @click="clearLocalStorage"
+            ><img src=../assets/img/deconnection.svg style= width:49px /><br />Connexion</router-link
           >
         </div>
       </nav>
@@ -56,6 +61,12 @@
 
 <script>
 export default {
+
+data() {
+  return {
+    token: localStorage.getItem("@token"),
+  }
+},
   methods: {
     //methods permettant la perte du token au clic du btn disconnect
     clearLocalStorage() {
