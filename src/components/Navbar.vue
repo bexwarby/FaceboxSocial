@@ -84,7 +84,7 @@ body {
 }
 .nav_vert_container {
   position: fixed;
-  top: 70px;
+  top: 60px;
   left: 0;
   bottom: 0;
 }
@@ -98,7 +98,7 @@ body {
 }
 header {
   background-color: #403c39;
-  height: 70px;
+  height: 60px;
   position: fixed;
   top: 0;
   left: 0;
