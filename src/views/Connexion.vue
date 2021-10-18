@@ -117,13 +117,23 @@ export default {
   background-color: #f1f0f176;
 }
 
-#btn_connexion {
+#btn_connexion  {
   margin: 10px auto;
   width: 40%;
   padding: 12px;
   cursor: pointer;
   background-color: #403c39;
   color: #f1f0f1;
+  border: 3px solid #e0a102;
+}
+
+#btn_connexion:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+  background-color: #e0a102;
+  border-radius: 5px;
+  border: 3px solid #403c39;
+  color: #403c39;
 }
 
 .form_connexion_container label {

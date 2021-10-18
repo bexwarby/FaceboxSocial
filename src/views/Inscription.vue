@@ -101,7 +101,12 @@ export default {
 };
 </script>
 
-<style>
+<style >
+
+
+* {
+  font-family: "Lato", sans-serif;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -111,6 +116,10 @@ export default {
   flex-direction: column;
 }
 
+.rightContain h2 {
+  margin-left: 25px;
+}
+
 .rightContain h2::after {
   content: "";
   display: block;
@@ -118,6 +127,7 @@ export default {
   border: 1px solid #e0a102;
   position: relative;
   bottom: 14px;
+  
 }
 
 .registration_container {
@@ -153,6 +163,9 @@ export default {
   border-radius: 5px;
   margin: 10px auto;
   padding: 8px;
+  color: #e0a102;
+  font-size: 18px;
+  font-weight: 900;
 }
 
 .registration_container label {
@@ -164,5 +177,19 @@ export default {
   margin: 10px auto;
   width: 40%;
   padding: 12px;
+  cursor: pointer;
+  background-color: #403c39;
+  color: #f1f0f1;
+  border: 3px solid #e0a102;
 }
+
+#button_inscription:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+  background-color: #e0a102;
+  border-radius: 5px;
+  border: 3px solid #403c39;
+  color: #403c39;
+}
+
 </style>

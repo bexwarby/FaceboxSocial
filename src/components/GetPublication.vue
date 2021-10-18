@@ -1,36 +1,35 @@
 <template>
   <!-- POST -->
   <div class="post_container">
-    <div class="publicationPost">
-      <div class="user_name">
-        <div @click="navigateToUserProfile" class="profilPost">
-          <img src="../assets/img/user.svg" style="width: 50px" />
-          <h3>{{ firstname }} {{ lastname }}</h3>
-        </div>
+    <!-- Nom de l'auteur avec lien vers son profil -->
+    <div class="publicationPost user_name">
+      <div @click="navigateToUserProfile" class="profilPost">
+        <img src="../assets/img/user.svg" style="width: 50px" />
+        <h3>{{ firstname }} {{ lastname }}</h3>
       </div>
     </div>
+    <!-- Affichage de l'article -->
     <div class="mid_container">
+      <!-- L'image -->
       <div class="img_container">
         <img src="../assets/img/muscu.jpg" />
       </div>
+      <!-- Le poste avec titre, content et commentaires -->
       <div class="content_container">
+        <!-- TITRE -->
         <h4 class="titlePost">{{ titlePost }}</h4>
+        <!-- CONTENT -->
         <p class="contentPost">{{ contentPost }}</p>
-        <div class="comment_container">
-          <ul>
-            <li v-for="(element, index) in arrayComment" :key="index">
-              <p>
-                {{ element }}
-              </p>
-            </li>
-            <li v-for="(element, index) in commentsPost" :key="index">
-              <p>{{ element.firstname }} {{ element.lastname }} a commenté:</p>
-              <p>
-                {{ element.content }}
-              </p>
-            </li>
-          </ul>
-        </div>
+        <!-- COMMENTAIRES -->
+        <ul class="comment_container">
+          <li v-for="(element, index) in arrayComment" :key="index">
+            <p>{{ element }}</p>
+          </li>
+          <li v-for="(element, index) in commentsPost" :key="index">
+            <p>{{ element.firstname }} {{ element.lastname }} a commenté:</p>
+            <p>{{ element.content }}</p>
+          </li>
+        </ul>
       </div>
     </div>
     <!-- POST -->
@@ -38,6 +37,7 @@
     <!--COMMENT/LIKE-->
     <div class="likes_container" v-if="token">
       <div class="like_content">
+        <!-- Fit like bouton -->
         <button @click="PostLike">
           <img src="../assets/img/muscle-du-bras.png" />
           Fit
@@ -45,6 +45,7 @@
         <p>{{ this.like }}</p>
       </div>
       <div class="dislike_content">
+        <!-- Fat like bouton -->
         <button @click="PostLike">
           <img src="../assets/img/muscle-du-bras.png" />
           Fat
@@ -52,19 +53,30 @@
         <p>{{ this.like }}</p>
       </div>
       <div class="comment_content">
-        <button class="btnComment" @click="ShowAddComment">
+        <!-- Bouton pour écrire un commentaire -->
+        <button class="btnComment" @click="showAddComment">
           <img src="../assets/img/commenter.png" />
           Commenter
         </button>
       </div>
     </div>
     <!--COMMENT/LIKE-->
+
     <!--POST COMMENT-->
-    <div class="show_comment" v-show="showComment">
-      <input type="text" v-model="inputComment" />
-      <button @click="[PostComment(), addComment()]">Valider</button>
-    </div>
+    <form
+      @submit.prevent="[PostComment(), addComment()]"
+      class="show_comment"
+      v-show="showComment"
+    >
+      <input
+        type="text"
+        v-model="inputComment"
+        placeholder="votre commentaire..."
+      />
+      <input class="addCommentButton" type="submit" value="Valider" />
+    </form>
     <!--POST COMMENT-->
+
     <!--SHOW COMMENT-->
 
     <!--SHOW COMMENT-->
@@ -95,44 +107,50 @@ export default {
     };
   },
   methods: {
+    /* Demande asynchronisée permettant l'utilisateur d'ajouter
+     * un commentaire s'ils sont connecté
+     */
     async PostComment() {
-      const urlPostComment =
-        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post/comment";
-      const optionPostComment = {
+      const url = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post/comment";
+      //Options de la requête API
+      const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: " Bearer " + localStorage.getItem(`@token`),
         },
+        // stringify ID et commentaire
         body: JSON.stringify({
           postId: this.idPost,
           content: this.inputComment,
         }),
       };
-
-      const responsePostComment = await fetch(
-        urlPostComment,
-        optionPostComment
-      );
-      console.log(responsePostComment);
-      const dataPostComment = await responsePostComment.json();
-      console.log(dataPostComment);
-
-      this.success = dataPostComment.success;
+      // va chercher les options de l'API
+      const response = await fetch(url, options);
+      console.log(response);
+      // la récupération des data stockées dans l'API
+      const data = await response.json();
+      console.log(data);
+      this.success = data.success;
     },
 
+    /** méthode à ajouter commentaire dans
+     * l'array arrayComment
+     */
     addComment() {
       this.arrayComment.push(this.inputComment);
       this.inputComment = "";
     },
-    ShowAddComment() {
+    /** méthode pour pouvoir ajouter un commentaire en
+     * click
+     */
+    showAddComment() {
       this.showComment = !this.showComment;
     },
-
+    /** méthode asynchrone pour aimer un post  */
     async PostLike() {
-      const urlPostLike =
-        "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post/like";
-      const optionPostLike = {
+      const url = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post/like";
+      const options = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -143,15 +161,19 @@ export default {
           postId: this.idPost,
         }),
       };
-
-      const responsePostLike = await fetch(urlPostLike, optionPostLike);
-      console.log(responsePostLike);
-      const dataPostLike = await responsePostLike.json();
-      console.log(dataPostLike);
-      if (dataPostLike.success) {
+      // va chercher les options de l'API
+      const response = await fetch(url, options);
+      console.log(response);
+      // la récupération en json des data stockées dans l'API
+      const data = await response.json();
+      console.log(data);
+      if (data.success) {
         this.like++;
       }
     },
+    /** méthode asynchrone pour naviguer vers le profil d'un
+     * utilisateur spécifique en remplacant l'url avec leur ID
+     */
     async navigateToUserProfile() {
       this.$router.replace({
         name: "ProfilUser",
