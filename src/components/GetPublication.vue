@@ -72,6 +72,7 @@
         type="text"
         v-model="inputComment"
         placeholder="votre commentaire..."
+        class="inputType"
       />
       <input class="addCommentButton" type="submit" value="Valider" />
     </form>
@@ -247,6 +248,17 @@ export default {
 
 .content_container p::-webkit-scrollbar {
   width: 10px;
+  background-color: #e0a102;
+  border-radius: 30px;
+}
+.content_container p::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+.content_container p::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background: #403c39;
 }
 .content_container h4 {
   margin-top: 0;
@@ -261,6 +273,20 @@ export default {
 .comment_container {
   height: 35%;
   overflow-y: auto;
+}
+.comment_container::-webkit-scrollbar {
+  width: 10px;
+  background-color: #e0a102;
+  border-radius: 30px;
+}
+.comment_container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 30px;
+}
+.comment_container::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background: #403c39;
 }
 
 .comment_content {
@@ -340,7 +366,7 @@ export default {
   padding-bottom: 25px;
 }
 
-.show_comment input {
+.show_comment .inputType {
   width: 84%;
   height: 40px;
   border-radius: 10px;
@@ -355,11 +381,9 @@ export default {
   background-color: hsla(0, 0%, 83%, 0.489);
   transition: 0.6s;
 }
-
-.show_comment button {
+.addCommentButton {
   margin-left: 22px;
 }
-
 .btnComment:hover {
   color: #f1f0f1;
   transition: 0.4s;
