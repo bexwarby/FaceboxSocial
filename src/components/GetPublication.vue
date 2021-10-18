@@ -197,7 +197,6 @@ export default {
   background: #f1f0f1;
   width: 820px;
   padding-bottom: 1px;
-
   margin: auto;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
@@ -213,7 +212,14 @@ export default {
 .profilPost img {
   margin-left: 12px;
 }
+.titlePost {
+  overflow-wrap: break-word;
+}
 
+.contentPost {
+  overflow-wrap: break-word;
+}
+/*User Name*/
 .user_name {
   background: #403c39;
   width: 100%;
@@ -232,9 +238,11 @@ export default {
   text-decoration: none;
 }
 
+/*Mid container */
 .mid_container {
   display: flex;
 }
+/*Right Container */
 .content_container {
   background: #d3d3d3;
   width: 40%;
@@ -250,7 +258,7 @@ export default {
   overflow-y: auto;
   height: 45%;
 }
-
+/* Scroll */
 .p_container::-webkit-scrollbar {
   width: 10px;
   background-color: #e0a102;
@@ -266,20 +274,14 @@ export default {
   background: #403c39;
 }
 .content_container h4 {
-  margin-top: 0;
-}
-.img_container {
-  width: 60%;
-}
-.img_container img {
-  width: 465px;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 .comment_container li {
   list-style: none;
 }
 .comment_container {
-  height: 35%;
+  height: 38%;
   overflow-y: auto;
 }
 .comment_container::-webkit-scrollbar {
@@ -306,15 +308,15 @@ export default {
   width: 36px;
   margin-right: 5px;
 }
-
-.titlePost {
-  overflow-wrap: break-word;
+/* IMAGE */
+.img_container {
+  width: 60%;
 }
-
-.contentPost {
-  overflow-wrap: break-word;
+.img_container img {
+  width: 465px;
+  margin-top: 10px;
 }
-
+/* Likes Container */
 .likes_container {
   display: flex;
   align-items: center;
@@ -368,7 +370,7 @@ export default {
   padding-left: 5px;
   transform: rotate(180deg);
 }
-
+/*Commentaire */
 .show_comment {
   width: 100%;
   padding-bottom: 25px;
@@ -389,6 +391,7 @@ export default {
   background-color: hsla(0, 0%, 83%, 0.489);
   transition: 0.6s;
 }
+/* Bouton add Commentaire */
 .addCommentButton {
   margin-left: 22px;
 }
