@@ -17,6 +17,9 @@
 <script>
 import Navbar from "../components/Navbar.vue";
 export default {
+  props: {
+    userId: String,
+  },
   data() {
     return {
       age: "",
@@ -25,15 +28,13 @@ export default {
       firstname: "",
       occupation: "",
       id: "",
-      getIdUserFromStorage: localStorage.getItem(`@iduser`),
     };
   },
   components: {
     Navbar: Navbar,
   },
-
   async mounted() {
-    const urlGetUserId = `https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user/${this.getIdUserFromStorage}`;
+    const urlGetUserId = `https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user/${this.userId}`;
     const optionGetUserId = {
       method: "GET",
       headers: {

@@ -30,6 +30,7 @@ const routes = [
     path: "/profilUser",
     name: "ProfilUser",
     component: ProfilUsers,
+    props: true,
   },
 ];
 
