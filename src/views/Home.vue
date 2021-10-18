@@ -1,7 +1,14 @@
 <template>
   <div class="home">
     <!--Appel des composants -->
-    <Navbar></Navbar>
+    <Navbar 
+        v-for="(element, index) in resultQuery()"
+     :key="index"
+    :post="this.post"
+    
+    >
+      
+    </Navbar>
     <PublicationContent></PublicationContent>
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
     Récupération des élements dans le tableau de l'API -->

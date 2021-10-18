@@ -77,9 +77,6 @@
     </form>
     <!--POST COMMENT-->
 
-    <!--SHOW COMMENT-->
-
-    <!--SHOW COMMENT-->
   </div>
 </template>
 
