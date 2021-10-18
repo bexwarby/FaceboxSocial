@@ -29,6 +29,7 @@
             <li v-for="(element, index) in commentsPost" :key="index">
               <p>{{ element.firstname }} {{ element.lastname }} a commenté:</p>
               <p>{{ element.content }}</p>
+                
             </li>
           </ul>
         </div>
@@ -37,7 +38,7 @@
     <!-- POST -->
 
     <!--COMMENT/LIKE-->
-    <div class="likes_container">
+    <div class="likes_container" v-if="token" >
       <div class="like_content">
         <button @click="PostLike">
           <img src="../assets/img/muscle-du-bras.png" />
@@ -93,6 +94,8 @@ export default {
       showComment: false,
       like: this.likePost,
       getId: this.userId,
+      token: localStorage.getItem('@token')
+
     };
   },
   methods: {
@@ -124,6 +127,8 @@ export default {
 
     addComment() {
       this.arrayComment.push(this.inputComment);
+      this.inputComment = "";
+      
     },
     ShowAddComment() {
       this.showComment = !this.showComment;

@@ -25,7 +25,7 @@
           @click="[connectUser(), accessHome]"
           type="submit"
           value="Connexion"
-          @keyup.enter="connectUser"
+          
         />
       </form>
     </div>

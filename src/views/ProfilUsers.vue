@@ -1,4 +1,5 @@
 <template>
+<div>
   <Navbar></Navbar>
 
   <p>First Name : {{ this.firstname }}</p>
@@ -8,7 +9,10 @@
   <p>Age : {{ this.age }}</p>
 
   <p>Occupation :{{ this.occupation }}</p>
+  
+</div> 
 </template>
+
 
 <script>
 import Navbar from "../components/Navbar.vue";

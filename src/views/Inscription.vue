@@ -24,7 +24,7 @@
           <label for="email">E-mail : </label>
           <input type="text" id="email" v-model="inputEmail" />
           <label for="password">Password : </label>
-          <input type="text" id="password" v-model="inputPassword" />
+          <input type="password" id="password" v-model="inputPassword" />
           <!--création d'un v-if si les champs ne sont pas tous remplis -->
           <p class="p_wrong_email" v-if="this.success == false">
             Veuillez remplir les champs
