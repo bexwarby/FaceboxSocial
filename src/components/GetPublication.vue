@@ -242,6 +242,14 @@ export default {
   margin-right: 5px;
 }
 
+.titlePost {
+  overflow-wrap: break-word;
+}
+
+.contentPost {
+  overflow-wrap: break-word;
+}
+
 .likes_container {
   display: flex;
   align-items: center;
