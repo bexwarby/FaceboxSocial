@@ -260,11 +260,9 @@ export default {
 }
 .comment_container {
   height: 35%;
-}
-.comment_container ul {
   overflow-y: auto;
-  height: 100%;
 }
+
 .comment_content {
   display: flex;
   align-items: center;
