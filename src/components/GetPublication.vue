@@ -19,7 +19,9 @@
         <!-- TITRE -->
         <h4 class="titlePost">{{ titlePost }}</h4>
         <!-- CONTENT -->
-        <p class="contentPost">{{ contentPost }}</p>
+        <div class="p_container">
+          <p class="contentPost">{{ contentPost }}</p>
+        </div>
         <!-- COMMENTAIRES -->
         <ul class="comment_container">
           <li v-for="(element, index) in arrayComment" :key="index">
@@ -240,24 +242,27 @@ export default {
   margin-right: 10px;
   height: 309.5px;
 }
-.content_container p {
+.p_container p {
+  margin: 5px;
+}
+.p_container {
   text-align: justify;
   overflow-y: auto;
   height: 45%;
 }
 
-.content_container p::-webkit-scrollbar {
+.p_container::-webkit-scrollbar {
   width: 10px;
   background-color: #e0a102;
   border-radius: 30px;
 }
-.content_container p::-webkit-scrollbar-track {
+.p_container::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 30px;
 }
-.content_container p::-webkit-scrollbar-thumb {
+.p_container::-webkit-scrollbar-thumb {
   border-radius: 30px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   background: #403c39;
 }
 .content_container h4 {
@@ -269,6 +274,9 @@ export default {
 .img_container img {
   width: 465px;
   margin-top: 10px;
+}
+.comment_container li {
+  list-style: none;
 }
 .comment_container {
   height: 35%;
@@ -285,7 +293,7 @@ export default {
 }
 .comment_container::-webkit-scrollbar-thumb {
   border-radius: 30px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   background: #403c39;
 }
 
