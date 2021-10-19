@@ -48,14 +48,19 @@
       <!--Appel de la method editProfil qui permet le changement de statut booléan
       permettant d'afficher et de masquer les champs de saisies pour modification du profil -->
       <div>
-        <button v-if="!showEditProfil && token" @click="editProfil">Modifier</button>
+        <button v-if="!showEditProfil && token" @click="editProfil">
+          Modifier
+        </button>
         <!--Appel de la fonction PutProfil qui envoie les données au serveur  -->
-        <button v-if="token && showEditProfil" @click="PutProfil()">Valider</button>
+        <button v-if="token && showEditProfil" @click="PutProfil()">
+          Valider
+        </button>
       </div>
       <!--Message d'alerte qui confirme à l'utilisateur qu'il a bien éffectué ses changements -->
       <p v-show="this.success == true && !showEditProfil" class="success">
         Votre profil a bien été modifié !
       </p>
+      {{ this.idUser }}
     </div>
 
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
@@ -158,10 +163,12 @@ export default {
 
     // attribution des elements présent dans l'API à notre data qui est initialement un tableau vide
     this.post = dataGetPost.posts;
+
     console.log(this.post);
-    return this.post.filter((element) => {
-      return element.userId.includes(this.idUser);
-    });
+    if (this.post.userId == this.idUser)
+      return this.post.filter((element) => {
+        return element.userId.toString().indexOf(this.idUser.toString());
+      });
   },
   //Création de la method permmettant de modifier le profil
   methods: {
@@ -210,7 +217,6 @@ export default {
 </script>
 
 <style scoped>
-
 * {
   font-family: "Lato", sans-serif;
 }
@@ -229,7 +235,6 @@ export default {
 }
 
 .profil input {
-  
   width: 80%;
   border-radius: 5px;
   margin: 10px auto;
@@ -245,7 +250,6 @@ export default {
 }
 
 .profil th {
-
   width: 100px;
 }
 
@@ -265,7 +269,8 @@ export default {
   background-color: #e0a102;
   border-radius: 5px;
   border: 3px solid #403c39;
-  color: #403c39;}
+  color: #403c39;
+}
 
 table {
   width: 250px;

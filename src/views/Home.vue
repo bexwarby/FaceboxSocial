@@ -3,7 +3,12 @@
     <!--Appel des composants -->
 
     <Navbar> </Navbar>
-    <input type="text" v-model="searchQuery" class="inputQuery" />
+    <input
+      type="text"
+      v-model="searchQuery"
+      class="inputQuery"
+      placeholder="Recherche..."
+    />
     <PublicationContent></PublicationContent>
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
     Récupération des élements dans le tableau de l'API -->
