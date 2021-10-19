@@ -238,7 +238,7 @@ export default {
   width: 80%;
   border-radius: 5px;
   margin: 10px auto;
-  padding: 8px;
+  padding: 5px;
   color: #e0a102;
   font-size: 18px;
   font-weight: 900;
