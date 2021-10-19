@@ -1,7 +1,7 @@
 <template>
     <div class="addsContain">
         <div class="imgAddsContain">
-            <img src="`../assets/img/shopImg/{{urlImg}}`" alt="image du produit vendu">
+            <img src="require(`../assets/img/shopImg/${urlImg}`)" alt="image du produit vendu">
         </div>
         <h4 class="titleProduct">{{titleProduct}}</h4>
         <p class="priceProduct">{{priceProduct}}€ - <span class="fullPrice">{{fullPriceProduct}}€</span> </p>
