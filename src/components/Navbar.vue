@@ -7,10 +7,6 @@
           <img src="../assets/img/f.svg" style="width: 50px" />
         </router-link>
       </div>
-
-      <div id="app">
-        <input v-model="searchQuery" />
-      </div>
     </header>
 
     <!-- Navbar vertical -->

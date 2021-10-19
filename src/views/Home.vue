@@ -3,16 +3,11 @@
     <!--Appel des composants -->
 
     <Navbar> </Navbar>
-
+    <input type="text" v-model="searchQuery" class="inputQuery" />
     <PublicationContent></PublicationContent>
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
     Récupération des élements dans le tableau de l'API -->
-    <input
-      class="inputQuery"
-      type="text"
-      v-model="searchQuery"
-      @keyup.enter="resultQuery"
-    />
+
     <GetPublication
       v-for="(element, index) in resultQuery"
       :key="index"
@@ -89,5 +84,8 @@ export default {
 <style>
 .inputQuery {
   z-index: 311;
+  position: fixed;
+  top: 3%;
+  left: 44%;
 }
 </style>
