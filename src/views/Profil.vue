@@ -100,6 +100,7 @@ export default {
       success: "",
       // array pour les posts
       post: [],
+      idUser: "",
     };
   },
   // récupération des components
@@ -107,6 +108,7 @@ export default {
     Navbar: Navbar,
     GetPublication: GetPublication,
   },
+
   //Création de mounted qui permet l'affichage au montage de la page de façon asynchronisée
   async mounted() {
     const urlGetProfil = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/user";
@@ -133,6 +135,8 @@ export default {
     this.email = dataGetProfil.email;
     this.age = dataGetProfil.age;
     this.occupation = dataGetProfil.occupation;
+    this.idUser = dataGetProfil._id;
+    console.log("ceci est un userid", this.idUser);
 
     const urlGetPost =
       "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
@@ -154,6 +158,9 @@ export default {
     // attribution des elements présent dans l'API à notre data qui est initialement un tableau vide
     this.post = dataGetPost.posts;
     console.log(this.post);
+    return this.post.filter((element) => {
+      return element.userId.includes(this.idUser);
+    });
   },
   //Création de la method permmettant de modifier le profil
   methods: {
