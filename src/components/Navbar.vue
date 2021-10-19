@@ -2,14 +2,12 @@
   <div>
     <!-- Header - Logo et recherche -->
     <header>
+      <label class="burger" for="toggle">☰</label>
+      <input type="checkbox" id="toggle" />
       <div class="logoSimplif">
         <router-link to="/">
           <img src="../assets/img/f.svg" style="width: 50px" />
         </router-link>
-      </div>
-
-      <div id="app">
-        <input v-model="searchQuery" />
       </div>
     </header>
 
@@ -39,7 +37,7 @@
             /><br />Shop</router-link
           >
           <!-- GROUPS -->
-          <router-link to=""
+          <router-link to="/ProfilUser"
             ><img
               src="../assets/img/communauté.svg"
               style="width: 49px"
@@ -88,9 +86,14 @@ export default {
 };
 </script>
 
+
 <style scoped>
 body {
   font-family: "Lato", sans-serif;
+}
+.burger,
+#toggle {
+  display: none;
 }
 .nav_vert_container {
   position: fixed;
@@ -166,5 +169,38 @@ header {
 .btn_connect a:hover {
   color: #e0a102;
   transition: 0.8s;
+}
+a.router-link-exact-active {
+  margin-bottom: 28px;
+  padding-top: 5px;
+  text-decoration: none;
+  color: #e0a102;
+  text-shadow: 2px 2px 2px #403c39;
+}
+@media (max-width: 800px) {
+  .burger {
+    display: flex;
+    color: white;
+    margin-right: 90%;
+    font-size: 40px;
+    height: 58px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+  }
+
+  .vertical_nav {
+    display: none;
+    flex-direction: column;
+    width: 100px;
+    height: 200px;
+    background-color: #808080;
+    justify-content: space-between;
+  }
+
+  #toggle:checked + .vertical_nav {
+    display: flex;
+  }
 }
 </style>

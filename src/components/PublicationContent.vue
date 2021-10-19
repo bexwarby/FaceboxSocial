@@ -1,42 +1,43 @@
 <template>
-  <form @submit.prevent="postPublication" class="pubcontent_container">
-    <h2>Partagez Maintenant</h2>
-    <!-- l'utilisateur poste son propre article -->
-    <!-- TITLE -->
-    <label class="bottomMargin bold" for="title">Titre de post :</label>
-    <input class="bottomMargin" id="title" type="text" v-model="title" />
-    <!-- CONTENT -->
-    <label class="bottomMargin bold" for="textarea"
-      >Ecrivez votre post ici :</label
-    >
-    <textarea
-      class="bottomMargin"
-      name="textcontainer"
-      id="textarea"
-      v-model="content"
-    ></textarea>
-    <!-- BOUTON POSTER -->
-    <div class="submitPost">
-      <img class="logo widthFifty" src="../assets/img/commenter.png" />
-      <input
-        class="pubContent bottomMargin widthFifty"
-        type="submit"
-        value="Poster"
-      />
-    </div>
+  <div>
+    <form @submit.prevent="postPublication()" class="pubcontent_container">
+      <h2>Partagez Maintenant</h2>
+      <!-- l'utilisateur poste son propre article -->
+      <!-- TITLE -->
+      <label class="bottomMargin bold" for="title">Titre de post :</label>
+      <input class="bottomMargin" id="title" type="text" v-model="title" />
+      <!-- CONTENT -->
+      <label class="bottomMargin bold" for="textarea"
+        >Ecrivez votre post ici :</label
+      >
+      <textarea
+        class="bottomMargin"
+        name="textcontainer"
+        id="textarea"
+        v-model="content"
+      ></textarea>
+
+      <!-- BOUTON POSTER -->
+      <div class="submitPost">
+        <img class="logo widthFifty" src="../assets/img/commenter.png" />
+        <input
+          class="pubContent bottomMargin widthFifty"
+          type="submit"
+          value="Validez"
+        />
+      </div>
+    </form>
     <!-- Afficher les content du post -->
-    <ul>
-      <li v-show="success == true">
-        <p>
-          <b>{{ this.title }}</b>
-        </p>
-        <p>{{ this.content }}</p>
-      </li>
-    </ul>
-  </form>
+    <div v-if="success == true">
+      <h2>Preview de votre post :</h2>
+      <GetPublication :titlePost="this.title" :contentPost="this.content">
+      </GetPublication>
+    </div>
+  </div>
 </template>
 
 <script>
+import GetPublication from "./GetPublication.vue";
 export default {
   data() {
     return {
@@ -44,6 +45,9 @@ export default {
       content: "",
       success: false,
     };
+  },
+  components: {
+    GetPublication: GetPublication,
   },
   methods: {
     //Demande asynchronisée permettant d'afficher le poste de l'utilisateur et l'envoi des données saisies au serveur API
@@ -73,17 +77,18 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .pubcontent_container {
   display: flex;
   flex-direction: column;
   margin: auto;
   padding: 70px 30px 20px 30px;
-  display: flex;
-  flex-direction: column;
   width: 400px;
   background-color: #e0a102;
   margin: auto;
+  border: 3px solid #403c39;
+  border-radius: 4%;
+  box-shadow: 2px 4px 2px #403c39;
 }
 .pubContent {
   margin: auto;
@@ -115,5 +120,13 @@ form h2 {
 }
 .bold {
   font-weight: 600;
+}
+
+@media (max-width: 800px) {
+
+.pubcontent_container {
+  width: 245px;
+  margin-left: 15%
+}
 }
 </style>

@@ -3,16 +3,17 @@
     <!--Appel des composants -->
 
     <Navbar> </Navbar>
-
+    <input
+      type="text"
+      v-model="searchQuery"
+      class="inputQuery"
+      placeholder="Recherche..."
+    />
     <PublicationContent></PublicationContent>
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
     Récupération des élements dans le tableau de l'API -->
-    <input
-      class="inputQuery"
-      type="text"
-      v-model="searchQuery"
-      @keyup.enter="resultQuery"
-    />
+
+    <h2>Inspirez-vous maintenant :</h2>
     <GetPublication
       v-for="(element, index) in resultQuery"
       :key="index"
@@ -73,14 +74,25 @@ export default {
     this.post = data.posts;
     this.lastname = this.post.lastname;
     console.log(this.post);
+    this.firstname = this.post.firstname;
+    this.content = this.post.content;
   },
   computed: {
     resultQuery() {
       console.log("hola", this.post);
       return this.post.filter((element) => {
-        return element.lastname
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase());
+        return (
+          element.lastname
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          element.firstname
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          element.content
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          element.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
       });
     },
   },
@@ -89,5 +101,12 @@ export default {
 <style>
 .inputQuery {
   z-index: 311;
+  position: fixed;
+  top: 3%;
+  left: 44%;
+}
+
+body {
+  margin: 0;
 }
 </style>
