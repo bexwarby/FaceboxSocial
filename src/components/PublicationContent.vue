@@ -16,6 +16,8 @@
         id="textarea"
         v-model="content"
       ></textarea>
+      <img style="" :src="image" alt="" />
+      <input type="file" @change="handleImage" accept="/*" />
 
       <!-- BOUTON POSTER -->
       <div class="submitPost">
@@ -44,12 +46,27 @@ export default {
       title: "",
       content: "",
       success: false,
+      image: "",
+      remoteUrl: "",
     };
   },
   components: {
     GetPublication: GetPublication,
   },
   methods: {
+    handleImage(e) {
+      const selectedImage = e.target.files[0]; // get first file
+      this.createBase64Image(selectedImage);
+    },
+    createBase64Image(fileObject) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.image = e.target.result;
+      };
+      reader.readAsBinaryString(fileObject);
+    },
+
     //Demande asynchronisée permettant d'afficher le poste de l'utilisateur et l'envoi des données saisies au serveur API
     async postPublication() {
       const url = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post";
@@ -63,6 +80,7 @@ export default {
         body: JSON.stringify({
           title: this.title,
           content: this.content,
+          image: this.image,
         }),
       };
       // va chercher les options de l'API
@@ -123,10 +141,9 @@ form h2 {
 }
 
 @media (max-width: 800px) {
-
-.pubcontent_container {
-  width: 245px;
-  margin-left: 15%
-}
+  .pubcontent_container {
+    width: 245px;
+    margin-left: 15%;
+  }
 }
 </style>
