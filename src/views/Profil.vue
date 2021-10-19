@@ -288,4 +288,12 @@ table p {
   border: 4px dashed #e0a102;
   padding: 2px;
 }
+
+@media (max-width: 800px) {
+
+  .profil {
+    width: 250px;
+    margin-left: 23%;
+  }
+}
 </style>
