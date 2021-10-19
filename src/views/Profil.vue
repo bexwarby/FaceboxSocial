@@ -38,10 +38,25 @@
           </td>
         </tr>
         <tr>
-          <th>Occupation :</th>
+          <th>Job :</th>
           <td>
             <p v-if="!showEditProfil">{{ occupation }}</p>
             <input v-else type="text" id="occupation" v-model="occupation" />
+          </td>
+        </tr>
+        <tr>
+          <th>Password :</th>
+          <td>
+            <div class="buttonsPassword" v-if="!showEditProfil">
+              <p>{{ password }}</p>
+              <div v-if="!showEditProfil && token">
+                <button v-if="shown == true" @click="showPassword()">
+                  Cacher
+                </button>
+                <button v-else @click="showPassword()">Montrer</button>
+              </div>
+            </div>
+            <input v-else type="password" id="password" v-model="password" />
           </td>
         </tr>
       </table>
@@ -98,6 +113,10 @@ export default {
       email: "",
       age: 0,
       occupation: "",
+      password: "",
+      // toggle entre password caché ou non caché
+      shown: true,
+      value: "",
       // boolean pour afficher modifier form
       showEditProfil: false,
       // deviens true si modification est effectué
@@ -141,6 +160,7 @@ export default {
     this.email = dataGetProfil.email;
     this.age = dataGetProfil.age;
     this.occupation = dataGetProfil.occupation;
+    this.password = dataGetProfil.password;
     this.idUser = dataGetProfil._id;
     console.log("ceci est un userid", this.idUser);
 
@@ -190,6 +210,7 @@ export default {
           email: this.email,
           age: this.age,
           occupation: this.occupation,
+          password: this.password,
         }),
       };
       // création de la const de réponse qui va chercher les options de l'API
@@ -211,6 +232,16 @@ export default {
     //methods dans le but d'afficher et masquer les inputs de modification
     editProfil() {
       this.showEditProfil = !this.showEditProfil;
+    },
+    // method pour montrer et cacher le mot de passe
+    showPassword() {
+      if (this.shown == true) {
+        this.value = this.password;
+        this.password = "*".repeat(this.value.length);
+      } else {
+        this.password = this.value;
+      }
+      this.shown = !this.shown;
     },
   },
 };
@@ -288,6 +319,15 @@ table p {
   margin: 0;
   font-size: 18px;
   font-weight: 900;
+}
+.buttonsPassword {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.buttonsPassword button {
+  width: 60px;
+  font-size: x-small;
 }
 .success {
   font-size: large;
