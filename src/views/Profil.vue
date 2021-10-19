@@ -2,7 +2,7 @@
   <div>
     <!--Appel le composant Navbar -->
     <Navbar></Navbar>
-
+    <h1>Votre Profil</h1>
     <!-- Afficher le profil 
     -- Si editing n'est pas activé, les valeurs s'affichent
     -- Else les input s'affichent pour pouvoir modifier
@@ -219,6 +219,14 @@ export default {
 <style scoped>
 * {
   font-family: "Lato", sans-serif;
+}
+h1 {
+  z-index: 311;
+  position: fixed;
+  color: white;
+  top: 0;
+  left: 44%;
+  margin-top: 10px;
 }
 /** Profile section */
 .profil {
