@@ -105,4 +105,8 @@ export default {
   top: 3%;
   left: 44%;
 }
+
+body {
+  margin: 0;
+}
 </style>
