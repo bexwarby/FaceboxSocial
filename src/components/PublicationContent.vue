@@ -121,4 +121,12 @@ form h2 {
 .bold {
   font-weight: 600;
 }
+
+@media (max-width: 800px) {
+
+.pubcontent_container {
+  width: 245px;
+  margin-left: 15%
+}
+}
 </style>

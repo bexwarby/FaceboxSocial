@@ -420,4 +420,39 @@ export default {
   transition: 0.4s;
   cursor: pointer;
 }
+
+@media (max-width: 800px) {
+
+h2 {
+  font-size: 15px;
+}
+
+.post_container {
+  width: 290px;
+  margin-left: 18%;
+}
+
+.mid_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content_container {
+
+  width: 100%;
+}
+.img_container img {
+  width: 290px;
+}
+
+.like_content {
+  margin: 0px;
+}
+.likes_container {
+  margin: 0;
+}
+.likes_container button img {
+  width: 25px;
+}
+}
 </style>
