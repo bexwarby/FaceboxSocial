@@ -23,12 +23,19 @@
           <p class="contentPost">{{ contentPost }}</p>
         </div>
         <!-- COMMENTAIRES -->
+        <h4 class="commentaireTitre">Commentaires :</h4>
         <ul class="comment_container">
           <li v-for="(element, index) in arrayComment" :key="index">
             <p>{{ element }}</p>
           </li>
-          <li v-for="(element, index) in commentsPost" :key="index">
-            <p>{{ element.firstname }} {{ element.lastname }} a commenté:</p>
+          <li
+            class="commentIndiv"
+            v-for="(element, index) in commentsPost"
+            :key="index"
+          >
+            <p class="nameComment">
+              <b>{{ element.firstname }} {{ element.lastname }} :</b>
+            </p>
             <p>{{ element.content }}</p>
           </li>
         </ul>
@@ -79,7 +86,6 @@
       <input class="addCommentButton" type="submit" value="Valider" />
     </form>
     <!--POST COMMENT-->
-
   </div>
 </template>
 
@@ -199,6 +205,7 @@ export default {
   border-top-left-radius: 30px;
   margin-bottom: 30px;
   box-shadow: 1px 1px 2px #d3d3d3;
+  white-space: pre-wrap;
 }
 /* Name Container */
 .profilPost {
@@ -253,8 +260,24 @@ export default {
 .p_container {
   text-align: justify;
   overflow-y: auto;
-  height: 45%;
+  height: 36%;
+  margin-top: 0;
 }
+.commentaireTitre {
+  border-top: 2px solid white;
+}
+.commentIndiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 30px;
+  align-items: center;
+  margin-top: 0;
+}
+.nameComment {
+  padding-right: 5px;
+}
+
 /* Scroll */
 .p_container::-webkit-scrollbar {
   width: 10px;
@@ -396,5 +419,40 @@ export default {
   color: #f1f0f1;
   transition: 0.4s;
   cursor: pointer;
+}
+
+@media (max-width: 800px) {
+
+h2 {
+  font-size: 15px;
+}
+
+.post_container {
+  width: 290px;
+  margin-left: 18%;
+}
+
+.mid_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content_container {
+
+  width: 100%;
+}
+.img_container img {
+  width: 290px;
+}
+
+.like_content {
+  margin: 0px;
+}
+.likes_container {
+  margin: 0;
+}
+.likes_container button img {
+  width: 25px;
+}
 }
 </style>

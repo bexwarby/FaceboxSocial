@@ -2,6 +2,8 @@
   <div>
     <!-- Header - Logo et recherche -->
     <header>
+      <label for="toggle">☰</label>
+      <input type="checkbox" id="toggle" />
       <div class="logoSimplif">
         <router-link to="/">
           <img src="../assets/img/f.svg" style="width: 50px" />
@@ -84,9 +86,13 @@ export default {
 };
 </script>
 
+
 <style scoped>
 body {
   font-family: "Lato", sans-serif;
+}
+label {
+  display: none;
 }
 .nav_vert_container {
   position: fixed;
@@ -169,5 +175,30 @@ a.router-link-exact-active {
   text-decoration: none;
   color: #e0a102;
   text-shadow: 2px 2px 2px #403c39;
+}
+@media (max-width: 800px) {
+  label {
+    display: flex;
+    color: white;
+    margin-right: 90%;
+    font-size: 40px;
+    height: 58px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+  }
+
+  .vertical_nav {
+    flex-direction: column;
+    width: 110%;
+    height: 100%;
+    background-color: #808080;
+    justify-content: space-between;
+  }
+
+  #toggle:checked + .vertical_nav {
+    display: flex;
+  }
 }
 </style>
