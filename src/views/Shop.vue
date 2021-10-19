@@ -1,8 +1,9 @@
 <template>
+<div>
   <Navbar></Navbar>
   <h1>Facebox Shop</h1>
 
-    <Navbar></Navbar>
+    
 
     <div class="addBodyContain">
         <h3 class="selectionSemaine">Selection de la Semaine :</h3>
@@ -22,6 +23,7 @@
         </div>
 
     </div>
+</div>
 </template>
 
 <script>
