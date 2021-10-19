@@ -68,14 +68,25 @@ export default {
     this.post = data.posts;
     this.lastname = this.post.lastname;
     console.log(this.post);
+    this.firstname = this.post.firstname;
+    this.content = this.post.content;
   },
   computed: {
     resultQuery() {
       console.log("hola", this.post);
       return this.post.filter((element) => {
-        return element.lastname
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase());
+        return (
+          element.lastname
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          element.firstname
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          element.content
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          element.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+        );
       });
     },
   },
