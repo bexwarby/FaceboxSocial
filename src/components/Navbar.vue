@@ -163,10 +163,4 @@ header {
   color: #e0a102;
   transition: 0.8s;
 }
-
-@media (max-width: 800px) {
-.vertical_nav {
-  width: 70%
-}
-}
 </style>

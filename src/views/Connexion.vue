@@ -17,7 +17,28 @@
         <input id="username" type="email" v-model="email" />
         <!-- PASSWORD -->
         <label for="password">Password</label>
-        <input id="password" type="password" v-model="password" />
+        <div style="width: 320px">
+          <input
+            v-if="this.show == false"
+            id="password"
+            type="password"
+            v-model="password"
+          />
+          <input v-else id="password" type="text" v-model="password" />
+          <button class="pwButton" @click="showPassword()">
+            <img
+              v-if="this.show == true"
+              src="../assets/img/eyeClosed.png"
+              style="width: 20px; height: 20px"
+            />
+            <img
+              v-else
+              src="../assets/img/eyeOpen.png"
+              style="width: 20px; height: 20px"
+            />
+          </button>
+        </div>
+
         <!-- FORGOTTEN PASSWORD - à faire! -->
         <router-link to="">Forgot your password ? </router-link>
         <!--création d'un v-if si les identifiants ne sont pas respectés -->
@@ -41,7 +62,9 @@ export default {
     return {
       email: "",
       password: "",
+      type: "password",
       success: true,
+      show: false,
     };
   },
   //Création de la méthode
@@ -76,6 +99,13 @@ export default {
         this.$router.push("/");
       }
     },
+    showPassword() {
+      if (this.show == false) {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
+    },
   },
 };
 </script>
@@ -87,6 +117,7 @@ export default {
 .form_connexion {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .form_connexion_container {
@@ -117,7 +148,7 @@ export default {
   background-color: #f1f0f176;
 }
 
-#btn_connexion  {
+#btn_connexion {
   margin: 10px auto;
   width: 40%;
   padding: 12px;
@@ -139,6 +170,11 @@ export default {
 .form_connexion_container label {
   text-align: left;
   margin: 5px 30px;
+}
+
+.pwButton {
+  background-color: white;
+  border: none;
 }
 
 .faceboxLogo {
