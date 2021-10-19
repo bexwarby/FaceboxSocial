@@ -9,7 +9,7 @@
       </div>
 
       <div id="app">
-        <input v-model="searchQuery" @keyup.enter="resultQuery()" />
+        <input v-model="searchQuery" />
       </div>
     </header>
 
@@ -66,6 +66,8 @@
 export default {
   props: {
     post: Array,
+    callback: Function,
+    LastNameQuery: String,
   },
 
   data() {
@@ -73,17 +75,9 @@ export default {
       token: localStorage.getItem("@token"),
       searchQuery: "",
       postArray: this.post,
+      lastNameData: this.LastNameQuery,
     };
   },
-
-  /* computed: {
-    resultQuery() {
-      console.log("bien ou bien", this.postArray);
-      return this.postArray.filter(Element =>{
-        return Element.content.toLowerCase().includes(this.searchQuery.toLowerCase())
-      })
-    }
-    },*/
 
   methods: {
     //methods permettant la perte du token au clic du btn disconnect

@@ -1,15 +1,20 @@
 <template>
   <div class="home">
     <!--Appel des composants -->
-    <!-- v-for="(element, index) in resultQuery"
-      :key="index"
-      :post="this.post"-->
+
     <Navbar> </Navbar>
+
     <PublicationContent></PublicationContent>
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
     Récupération des élements dans le tableau de l'API -->
+    <input
+      class="inputQuery"
+      type="text"
+      v-model="searchQuery"
+      @keyup.enter="resultQuery"
+    />
     <GetPublication
-      v-for="(element, index) in post"
+      v-for="(element, index) in resultQuery"
       :key="index"
       :titlePost="element.title"
       :contentPost="element.content"
@@ -36,6 +41,8 @@ export default {
     return {
       // post array pour afficher plusieurs articles
       post: [],
+      lastname: "",
+      searchQuery: "",
     };
   },
   // récupération des components
@@ -64,7 +71,23 @@ export default {
 
     // attribution des elements présent dans l'API à notre data qui est initialement un tableau vide
     this.post = data.posts;
+    this.lastname = this.post.lastname;
     console.log(this.post);
+  },
+  computed: {
+    resultQuery() {
+      console.log("hola", this.post);
+      return this.post.filter((element) => {
+        return element.lastname
+          .toLowerCase()
+          .includes(this.searchQuery.toLowerCase());
+      });
+    },
   },
 };
 </script>
+<style>
+.inputQuery {
+  z-index: 311;
+}
+</style>
