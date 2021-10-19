@@ -1,13 +1,14 @@
 <template>
+<div>
   <Navbar></Navbar>
   <h1>Facebox Shop</h1>
 
-    <Navbar></Navbar>
+    
 
     <div class="addBodyContain">
         <h3 class="selectionSemaine">Selection de la Semaine :</h3>
         <div class="alignAdd">
-            <AddPublication urlImg="wheyHarder.png" titleProduct="Whey Harder" :priceProduct="44.90" :fullPriceProduct="54.90"></AddPublication>
+            <!-- <AddPublication urlImg="wheyHarder.png" titleProduct="Whey Harder" :priceProduct="44.90" :fullPriceProduct="54.90"></AddPublication> -->
             <AddPublication urlImg="wheyIsolate.png" titleProduct="Whey Isolate (2KG)" :priceProduct="42.00" :fullPriceProduct="52.90"></AddPublication>
             <AddPublication urlImg="vegetalProtein.png" titleProduct="Végétal Protein 750 G - Vanille" :priceProduct="20.00" :fullPriceProduct="26.00"></AddPublication>
             <AddPublication urlImg="barreHexagonale.jpg" titleProduct="Barre Hexagonale" :priceProduct="143.00" :fullPriceProduct="179.00"></AddPublication>
@@ -21,6 +22,7 @@
         </div>
 
     </div>
+</div>
 </template>
 
 <script>
