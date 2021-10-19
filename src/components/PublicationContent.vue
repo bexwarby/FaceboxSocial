@@ -86,6 +86,9 @@ export default {
   width: 400px;
   background-color: #e0a102;
   margin: auto;
+  border: 3px solid #403c39;
+  border-radius: 4%;
+  box-shadow: 2px 4px 2px #403c39;
 }
 .pubContent {
   margin: auto;
