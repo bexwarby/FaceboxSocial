@@ -3,7 +3,7 @@
     <!-- Appeler le composant navbar -->
     <Navbar></Navbar>
     <!-- Afficher le profil de l'utilisateur -->
-    <div>
+    <div class="profilUser">
       <p>First Name : {{ this.firstname }}</p>
       <p>Last Name : {{ this.lastname }}</p>
       <p>E-mail : {{ this.email }}</p>
@@ -63,3 +63,24 @@ export default {
   },
 };
 </script>
+<style>
+.profilUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #e0a1026b;
+  height: 380px;
+  padding-top: 50px;
+  margin: auto;
+  margin-bottom: 30p;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.profilUser p {
+  text-align: left;
+  margin: 5px 30px;
+}
+</style>

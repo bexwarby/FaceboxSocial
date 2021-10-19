@@ -35,7 +35,7 @@
             /><br />Shop</router-link
           >
           <!-- GROUPS -->
-          <router-link to=""
+          <router-link to="/ProfilUser"
             ><img
               src="../assets/img/communauté.svg"
               style="width: 49px"
@@ -162,5 +162,12 @@ header {
 .btn_connect a:hover {
   color: #e0a102;
   transition: 0.8s;
+}
+a.router-link-exact-active {
+  margin-bottom: 28px;
+  padding-top: 5px;
+  text-decoration: none;
+  color: #e0a102;
+  text-shadow: 2px 2px 2px #403c39;
 }
 </style>

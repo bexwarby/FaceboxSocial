@@ -219,6 +219,7 @@ export default {
 <style scoped>
 * {
   font-family: "Lato", sans-serif;
+  margin: 0;
 }
 /** Profile section */
 .profil {
@@ -231,7 +232,6 @@ export default {
   padding-top: 50px;
   margin: auto;
   margin-bottom: 30px;
-  border-radius: 3%;
 }
 
 .profil input {
@@ -261,6 +261,7 @@ export default {
   background-color: #403c39;
   color: #f1f0f1;
   border: 3px solid #e0a102;
+  border-radius: 5px;
 }
 
 .profil button:hover {
