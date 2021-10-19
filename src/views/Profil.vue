@@ -75,7 +75,6 @@
       <p v-show="this.success == true && !showEditProfil" class="success">
         Votre profil a bien été modifié !
       </p>
-      {{ this.idUser }}
     </div>
 
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
@@ -182,13 +181,9 @@ export default {
     console.log(dataGetPost);
 
     // attribution des elements présent dans l'API à notre data qui est initialement un tableau vide
-    this.post = dataGetPost.posts;
-
-    console.log(this.post);
-    if (this.post.userId == this.idUser)
-      return this.post.filter((element) => {
-        return element.userId.toString().indexOf(this.idUser.toString());
-      });
+    this.post = dataGetPost.posts.filter((element) => {
+      return element.userId === this.idUser;
+    });
   },
   //Création de la method permmettant de modifier le profil
   methods: {
@@ -339,7 +334,6 @@ table p {
 }
 
 @media (max-width: 800px) {
-
   .profil {
     width: 250px;
     margin-left: 23%;
