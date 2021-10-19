@@ -8,6 +8,7 @@
     <!--Attribution des valeurs aux props de "GetPublication.vue"/ 
     Récupération des élements dans le tableau de l'API -->
 
+    <h2>Inspirez-vous maintenant :</h2>
     <GetPublication
       v-for="(element, index) in resultQuery"
       :key="index"
