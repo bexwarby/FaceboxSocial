@@ -48,12 +48,12 @@
       <!--Appel de la method editProfil qui permet le changement de statut booléan
       permettant d'afficher et de masquer les champs de saisies pour modification du profil -->
       <div>
-        <button v-if="!showEditProfil" @click="editProfil">Modifier</button>
+        <button v-if="!showEditProfil && token" @click="editProfil">Modifier</button>
         <!--Appel de la fonction PutProfil qui envoie les données au serveur  -->
-        <button v-else @click="PutProfil()">Valider</button>
+        <button v-if="token && showEditProfil" @click="PutProfil()">Valider</button>
       </div>
       <!--Message d'alerte qui confirme à l'utilisateur qu'il a bien éffectué ses changements -->
-      <p v-show="this.success == true" class="success">
+      <p v-show="this.success == true && !showEditProfil" class="success">
         Votre profil a bien été modifié !
       </p>
     </div>
@@ -100,6 +100,7 @@ export default {
       success: "",
       // array pour les posts
       post: [],
+      token: localStorage.getItem("@token")
     };
   },
   // récupération des components
@@ -202,6 +203,10 @@ export default {
 </script>
 
 <style scoped>
+
+* {
+  font-family: "Lato", sans-serif;
+}
 /** Profile section */
 .profil {
   display: flex;
@@ -209,18 +214,60 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   background: #e0a1026b;
-  height: 250px;
+  height: 380px;
   padding-top: 50px;
   margin: auto;
   margin-bottom: 30px;
   border-radius: 3%;
 }
+
+.profil input {
+  
+  width: 80%;
+  border-radius: 5px;
+  margin: 10px auto;
+  padding: 8px;
+  color: #e0a102;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.profil p {
+  text-align: left;
+  margin: 5px 30px;
+}
+
+.profil th {
+
+  width: 100px;
+}
+
+.profil button {
+  margin: 10px auto;
+  width: 150%;
+  padding: 12px;
+  cursor: pointer;
+  background-color: #403c39;
+  color: #f1f0f1;
+  border: 3px solid #e0a102;
+}
+
+.profil button:hover {
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+  background-color: #e0a102;
+  border-radius: 5px;
+  border: 3px solid #403c39;
+  color: #403c39;}
+
 table {
   width: 250px;
   text-align: justify;
 }
 table p {
   margin: 0;
+  font-size: 18px;
+  font-weight: 900;
 }
 .success {
   font-size: large;

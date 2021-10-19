@@ -74,6 +74,7 @@ export default {
       console.log("hola", this.post);
       return this.post.filter((element) => {
         return element.lastname
+        
           .toLowerCase()
           .includes(this.searchQuery.toLowerCase());
       });
