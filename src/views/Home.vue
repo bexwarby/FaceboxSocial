@@ -26,6 +26,7 @@
       :likePost="element.likes.length"
       :userId="element.userId"
       :dislikePost="element.dislikes.length"
+      :urlImage="element.imageUrl"
     >
     </GetPublication>
   </div>
