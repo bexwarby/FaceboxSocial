@@ -24,6 +24,7 @@
             type="password"
             v-model="password"
           />
+
           <input v-else id="password" type="text" v-model="password" />
           <button type="button" class="pwButton" @click="showPassword()">
             <img
@@ -126,7 +127,7 @@ export default {
   margin: auto;
 }
 .form_connexion_container input {
-  width: 80%;
+  padding: 10px 25px;
   border-radius: 5px;
   margin: 20px auto;
   padding: 8px;
@@ -184,5 +185,9 @@ export default {
 
 .p_wrong_email {
   color: red;
+}
+
+#password {
+  margin-left: 30px;
 }
 </style>
