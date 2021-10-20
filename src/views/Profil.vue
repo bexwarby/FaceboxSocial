@@ -159,30 +159,6 @@ export default {
     this.age = dataGetProfil.age;
     this.occupation = dataGetProfil.occupation;
     this.password = dataGetProfil.password;
-    this.idUser = dataGetProfil._id;
-    console.log("ceci est un userid", this.idUser);
-
-    const urlGetPost =
-      "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/posts?limit=10000";
-    //Options de la requête API
-    const optionGetPost = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    // création de la const de réponse qui va chercher les options de l'API
-    const responseGetPost = await fetch(urlGetPost, optionGetPost);
-    console.log(responseGetPost);
-
-    // Création de la const data qui nous permet la récupération des data stockées dans l'API
-    const dataGetPost = await responseGetPost.json();
-    console.log(dataGetPost);
-
-    // attribution des elements présent dans l'API à notre data qui est initialement un tableau vide
-    this.post = dataGetPost.posts.filter((element) => {
-      return element.userId === this.idUser;
-    });
   },
   //Création de la method permmettant de modifier le profil
   methods: {
@@ -261,8 +237,8 @@ h1 {
   align-items: center;
   justify-content: space-evenly;
   background: #e0a1026b;
-  height: 380px;
-  padding-top: 50px;
+  height: 400px;
+  padding-top: 70px;
   margin: auto;
   margin-bottom: 30px;
 }

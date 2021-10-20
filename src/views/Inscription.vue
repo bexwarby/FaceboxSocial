@@ -32,7 +32,27 @@
           <input type="text" id="email" v-model="inputEmail" />
           <!-- PASSWORD -->
           <label for="password">Password : </label>
-          <input type="password" id="password" v-model="inputPassword" />
+          <div style="width: 320px">
+            <input
+              v-if="this.show == false"
+              id="password"
+              type="password"
+              v-model="inputPassword"
+            />
+            <input v-else id="password" type="text" v-model="inputPassword" />
+            <button type="button" class="pwButton" @click="showPassword()">
+              <img
+                v-if="this.show == true"
+                src="../assets/img/eyeClosed.png"
+                style="width: 20px; height: 20px"
+              />
+              <img
+                v-else
+                src="../assets/img/eyeOpen.png"
+                style="width: 20px; height: 20px"
+              />
+            </button>
+          </div>
           <!--création d'un v-if si les champs ne sont pas tous remplis -->
           <p class="p_wrong_email" v-if="this.success == false">
             Veuillez remplir les champs
@@ -63,6 +83,7 @@ export default {
       inputPassword: "",
       // success true si l'utilisateur est enregistré
       success: true,
+      show: false,
     };
   },
   //Création de la méthode
@@ -97,13 +118,18 @@ export default {
         this.$router.push("/connexion");
       }
     },
+    showPassword() {
+      if (this.show == false) {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
+    },
   },
 };
 </script>
 
 <style >
-
-
 * {
   font-family: "Lato", sans-serif;
 }
@@ -114,6 +140,7 @@ export default {
 .registration {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .rightContain h2 {
@@ -127,7 +154,6 @@ export default {
   border: 1px solid #e0a102;
   position: relative;
   bottom: 14px;
-  
 }
 
 .registration_container {
@@ -191,5 +217,4 @@ export default {
   border: 3px solid #403c39;
   color: #403c39;
 }
-
 </style>
