@@ -35,11 +35,16 @@
           <div style="width: 314px">
             <input
               v-if="this.show == false"
-              id="password"
+              id="passwordOne"
               type="password"
               v-model="inputPassword"
             />
-            <input v-else id="password" type="text" v-model="inputPassword" />
+            <input
+              v-else
+              id="passwordOne"
+              type="text"
+              v-model="inputPassword"
+            />
             <button type="button" class="pwButton" @click="showPassword()">
               <img
                 v-if="this.show == true"
@@ -128,6 +133,10 @@ export default {
 <style >
 * {
   font-family: "Lato", sans-serif;
+}
+
+#passwordOne {
+  margin-left: 10px;
 }
 .container {
   display: flex;
