@@ -34,7 +34,7 @@
             :key="index"
           >
             <p class="nameComment">
-              <b>{{ element.firstname }} {{ element.lastname }} :</b>
+              <b>{{ element.lastname }} :</b>
             </p>
             <p>{{ element.content }}</p>
           </li>
@@ -300,6 +300,7 @@ export default {
   height: 30px;
   align-items: center;
   margin-top: 0;
+  overflow-wrap: break-word;
 }
 .nameComment {
   padding-right: 5px;
