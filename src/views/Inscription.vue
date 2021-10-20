@@ -44,13 +44,9 @@
               <img
                 v-if="this.show == true"
                 src="../assets/img/eyeClosed.png"
-                style="width: 20px; height: 20px"
+                class="eye"
               />
-              <img
-                v-else
-                src="../assets/img/eyeOpen.png"
-                style="width: 20px; height: 20px"
-              />
+              <img v-else src="../assets/img/eyeOpen.png" class="eye" />
             </button>
           </div>
           <!--création d'un v-if si les champs ne sont pas tous remplis -->
@@ -207,6 +203,12 @@ export default {
   background-color: #403c39;
   color: #f1f0f1;
   border: 3px solid #e0a102;
+}
+.eye {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: none;
 }
 
 #button_inscription:hover {

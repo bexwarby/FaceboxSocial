@@ -51,9 +51,17 @@
               <p>{{ password }}</p>
               <div v-if="!showEditProfil && token">
                 <button v-if="shown == true" @click="showPassword()">
-                  Cacher
+                  <img
+                    src="../assets/img/eyeClosed.png"
+                    style="width: 20px; height: 20px"
+                  />
                 </button>
-                <button v-else @click="showPassword()">Montrer</button>
+                <button v-else @click="showPassword()">
+                  <img
+                    src="../assets/img/eyeOpen.png"
+                    style="width: 20px; height: 20px"
+                  />
+                </button>
               </div>
             </div>
             <input v-else type="password" id="password" v-model="password" />
