@@ -32,7 +32,7 @@
           <input type="text" id="email" v-model="inputEmail" />
           <!-- PASSWORD -->
           <label for="password">Password : </label>
-          <div style="width: 320px">
+          <div style="width: 314px">
             <input
               v-if="this.show == false"
               id="password"
@@ -156,7 +156,7 @@ export default {
   display: flex;
   width: 1000px;
   height: 700px;
-  margin: auto;
+  margin: auto 0 auto 10px;
 }
 
 .leftContain {
