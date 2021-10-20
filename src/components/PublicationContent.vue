@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="postPublication()" class="pubcontent_container">
+    <form @submit.prevent class="pubcontent_container">
       <h2>Partagez Maintenant</h2>
       <!-- l'utilisateur poste son propre article -->
       <!-- TITLE -->
@@ -18,14 +18,10 @@
       ></textarea>
 
       <!-- BOUTON POSTER -->
-      <div class="submitPost">
+      <button class="submitPost" @click="postPublication()">
         <img class="logo widthFifty" src="../assets/img/commenter.png" />
-        <input
-          class="pubContent bottomMargin widthFifty"
-          type="submit"
-          value="Validez"
-        />
-      </div>
+        <p class="pubContent bottomMargin widthFifty">Validez</p>
+      </button>
     </form>
     <!-- Afficher les content du post -->
     <div v-if="success == true">
@@ -123,10 +119,9 @@ form h2 {
 }
 
 @media (max-width: 800px) {
-
-.pubcontent_container {
-  width: 245px;
-  margin-left: 15%
-}
+  .pubcontent_container {
+    width: 245px;
+    margin-left: 15%;
+  }
 }
 </style>
