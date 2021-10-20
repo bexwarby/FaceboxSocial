@@ -2,7 +2,7 @@
   <div>
     <!-- Header - Logo et recherche -->
     <header>
-      <label for="toggle">☰</label>
+      <label class="burger" for="toggle">☰</label>
       <input type="checkbox" id="toggle" />
       <div class="logoSimplif">
         <router-link to="/">
@@ -91,7 +91,8 @@ export default {
 body {
   font-family: "Lato", sans-serif;
 }
-label {
+.burger,
+#toggle {
   display: none;
 }
 .nav_vert_container {
@@ -177,7 +178,7 @@ a.router-link-exact-active {
   text-shadow: 2px 2px 2px #403c39;
 }
 @media (max-width: 800px) {
-  label {
+  .burger {
     display: flex;
     color: white;
     margin-right: 90%;
@@ -190,9 +191,10 @@ a.router-link-exact-active {
   }
 
   .vertical_nav {
+    display: none;
     flex-direction: column;
-    width: 110%;
-    height: 100%;
+    width: 100px;
+    height: 200px;
     background-color: #808080;
     justify-content: space-between;
   }

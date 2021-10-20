@@ -25,6 +25,7 @@
       :lastname="element.lastname"
       :likePost="element.likes.length"
       :userId="element.userId"
+      :dislikePost="element.dislikes.length"
     >
     </GetPublication>
   </div>

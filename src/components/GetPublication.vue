@@ -55,11 +55,11 @@
       </div>
       <div class="dislike_content">
         <!-- Fat like bouton -->
-        <button @click="PostLike">
+        <button @click="PostDislike">
           <img src="../assets/img/muscle-du-bras.png" />
           Fat
         </button>
-        <p>{{ this.like }}</p>
+        <p>{{ this.dislike }}</p>
       </div>
       <div class="comment_content">
         <!-- Bouton pour écrire un commentaire -->
@@ -100,6 +100,7 @@ export default {
     lastname: String,
     likePost: Number,
     userId: String,
+    dislikePost: Number,
   },
   data() {
     return {
@@ -110,6 +111,7 @@ export default {
       like: this.likePost,
       getId: this.userId,
       token: localStorage.getItem("@token"),
+      dislike: this.dislikePost,
     };
   },
   methods: {
@@ -175,6 +177,29 @@ export default {
       console.log(data);
       if (data.success) {
         this.like++;
+      }
+    },
+    async PostDislike() {
+      const url = "https://dw-s3-nice-facebox.osc-fr1.scalingo.io/post/dislike";
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          //récupération du token pour vérifier que l'utilisateur existe bien et puisse accéder a son profil
+          Authorization: " Bearer " + localStorage.getItem(`@token`),
+        },
+        body: JSON.stringify({
+          postId: this.idPost,
+        }),
+      };
+      // va chercher les options de l'API
+      const response = await fetch(url, options);
+      console.log(response);
+      // la récupération en json des data stockées dans l'API
+      const data = await response.json();
+      console.log(data);
+      if (data.success) {
+        this.dislike++;
       }
     },
     /** méthode asynchrone pour naviguer vers le profil d'un
@@ -422,37 +447,35 @@ export default {
 }
 
 @media (max-width: 800px) {
+  h2 {
+    font-size: 15px;
+  }
 
-h2 {
-  font-size: 15px;
-}
+  .post_container {
+    width: 290px;
+    margin-left: 18%;
+  }
 
-.post_container {
-  width: 290px;
-  margin-left: 18%;
-}
+  .mid_container {
+    display: flex;
+    flex-direction: column;
+  }
 
-.mid_container {
-  display: flex;
-  flex-direction: column;
-}
+  .content_container {
+    width: 100%;
+  }
+  .img_container img {
+    width: 290px;
+  }
 
-.content_container {
-
-  width: 100%;
-}
-.img_container img {
-  width: 290px;
-}
-
-.like_content {
-  margin: 0px;
-}
-.likes_container {
-  margin: 0;
-}
-.likes_container button img {
-  width: 25px;
-}
+  .like_content {
+    margin: 0px;
+  }
+  .likes_container {
+    margin: 0;
+  }
+  .likes_container button img {
+    width: 25px;
+  }
 }
 </style>

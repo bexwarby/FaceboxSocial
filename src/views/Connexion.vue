@@ -25,7 +25,7 @@
             v-model="password"
           />
           <input v-else id="password" type="text" v-model="password" />
-          <button class="pwButton" @click="showPassword()">
+          <button type="button" class="pwButton" @click="showPassword()">
             <img
               v-if="this.show == true"
               src="../assets/img/eyeClosed.png"
