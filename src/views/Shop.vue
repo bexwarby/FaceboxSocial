@@ -12,7 +12,6 @@
           :priceProduct="15.0"
           :fullPriceProduct="19.99"
         ></AddPublication>
-
         <AddPublication
           urlImg="wheyIsolate.png"
           titleProduct="Whey Isolate (2KG)"
