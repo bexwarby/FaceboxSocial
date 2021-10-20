@@ -16,8 +16,8 @@
         id="textarea"
         v-model="content"
       ></textarea>
-      <img style="" :src="image" alt="" />
-      <input type="file" @change="handleImage" accept="/*" />
+
+      <input type="file" @change="downloadImage" accept="/*" />
 
       <!-- BOUTON POSTER -->
       <div class="submitPost">
@@ -46,7 +46,7 @@ export default {
       title: "",
       content: "",
       success: false,
-      image: "",
+      profilePicture: "",
       remoteUrl: "",
     };
   },
@@ -54,17 +54,14 @@ export default {
     GetPublication: GetPublication,
   },
   methods: {
-    handleImage(e) {
-      const selectedImage = e.target.files[0]; // get first file
-      this.createBase64Image(selectedImage);
-    },
-    createBase64Image(fileObject) {
+    downloadImage(e) {
+      const image = e.target.files[0];
       const reader = new FileReader();
-
+      reader.readAsDataURL(image);
       reader.onload = (e) => {
-        this.image = e.target.result;
+        this.profilePicture = e.target.result;
+        console.log(this.profilePicture);
       };
-      reader.readAsBinaryString(fileObject);
     },
 
     //Demande asynchronisée permettant d'afficher le poste de l'utilisateur et l'envoi des données saisies au serveur API
@@ -80,7 +77,7 @@ export default {
         body: JSON.stringify({
           title: this.title,
           content: this.content,
-          image: this.image,
+          image: this.profilePicture,
         }),
       };
       // va chercher les options de l'API

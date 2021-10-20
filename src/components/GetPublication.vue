@@ -12,7 +12,7 @@
     <div class="mid_container">
       <!-- L'image -->
       <div class="img_container">
-        <img src="../assets/img/muscu.jpg" />
+        <img :src="this.ImageUrl" />
       </div>
       <!-- Le poste avec titre, content et commentaires -->
       <div class="content_container">
@@ -101,6 +101,7 @@ export default {
     likePost: Number,
     userId: String,
     dislikePost: Number,
+    urlImage: String,
   },
   data() {
     return {
@@ -112,6 +113,7 @@ export default {
       getId: this.userId,
       token: localStorage.getItem("@token"),
       dislike: this.dislikePost,
+      ImageUrl: this.urlImage,
     };
   },
   methods: {
@@ -358,8 +360,9 @@ export default {
   width: 60%;
 }
 .img_container img {
-  width: 465px;
+  width: 454px;
   margin-top: 10px;
+  height: 310px;
 }
 /* Likes Container */
 .likes_container {

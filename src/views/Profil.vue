@@ -90,9 +90,8 @@
         :firstname="element.firstname"
         :lastname="element.lastname"
         :likePost="element.likes.length"
+        :urlImage="element.imageUrl"
       ></GetPublication>
-
-      <button @click="showPost">Clique</button>
     </div>
   </div>
 </template>
