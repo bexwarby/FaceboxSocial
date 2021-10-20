@@ -40,6 +40,7 @@ import GetPublication from "../components/GetPublication.vue";
 
 export default {
   //Création des datas properties
+
   data() {
     return {
       // post array pour afficher plusieurs articles

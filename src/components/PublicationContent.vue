@@ -16,7 +16,7 @@
         id="textarea"
         v-model="content"
       ></textarea>
-
+      <img :src="profilePicture" alt="" />
       <input type="file" @change="downloadImage" accept="/*" />
 
       <!-- BOUTON POSTER -->
@@ -28,7 +28,11 @@
     <!-- Afficher les content du post -->
     <div v-if="success == true">
       <h2>Preview de votre post :</h2>
-      <GetPublication :titlePost="this.title" :contentPost="this.content">
+      <GetPublication
+        :titlePost="this.title"
+        :contentPost="this.content"
+        :urlImage="this.profilePicture"
+      >
       </GetPublication>
     </div>
   </div>
